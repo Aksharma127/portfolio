@@ -20,6 +20,7 @@
     --transition-bezier: cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother easing */
 }
 
+/* Reset & Base */
 * {
     margin: 0;
     padding: 0;
@@ -28,7 +29,7 @@
 
 html {
     scroll-behavior: smooth;
-    font-size: 16px; /* Base font size */
+    font-size: 16px;
 }
 
 body {
@@ -36,7 +37,7 @@ body {
     color: var(--text-color);
     background-color: var(--bg-color);
     line-height: 1.7;
-    overflow-x: hidden; /* Prevent horizontal scroll caused by animations */
+    overflow-x: hidden;
 }
 
 .container {
@@ -47,19 +48,21 @@ body {
 
 h1, h2, h3 {
     font-weight: 700;
+    color: var(--text-color);
     margin-bottom: 1rem;
-    color: var(--text-color); /* White/light text for headings */
 }
-h2 { /* Section headings */
-    font-family: var(--font-secondary); /* Tech font for headings */
-    font-size: clamp(2rem, 5vw, 2.8rem); /* Responsive font size */
+
+h2 {
+    font-family: var(--font-secondary);
+    font-size: clamp(2rem, 5vw, 2.8rem);
     text-align: center;
     margin-bottom: 3.5rem;
-    position: relative;
-    color: var(--primary-color); /* Use primary color */
+    color: var(--primary-color);
     letter-spacing: 1px;
+    position: relative;
 }
-h2::after { /* Underline effect */
+
+h2::after {
     content: '';
     display: block;
     width: 80px;
@@ -72,7 +75,7 @@ h2::after { /* Underline effect */
 
 p {
     margin-bottom: 1.2rem;
-    color: var(--text-muted); /* Slightly muted paragraph text */
+    color: var(--text-muted);
     font-size: 1rem;
 }
 
@@ -81,15 +84,32 @@ a {
     text-decoration: none;
     transition: color var(--transition-speed) ease;
 }
-a:hover { color: var(--accent-color); }
 
-img { max-width: 100%; height: auto; display: block; }
+a:hover {
+    color: var(--accent-color);
+}
 
-.section { padding: 6rem 0; position: relative; overflow: hidden; }
-.alt-bg { background-color: var(--bg-alt-color); }
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 
-/* Accent color helper */
-.accent { color: var(--accent-color); font-weight: bold; }
+.section {
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.alt-bg {
+    background-color: var(--bg-alt-color);
+}
+
+/* Accent helper */
+.accent {
+    color: var(--accent-color);
+    font-weight: bold;
+}
 
 /* Call to Action Button */
 .cta-button {
@@ -110,6 +130,7 @@ img { max-width: 100%; height: auto; display: block; }
     position: relative;
     overflow: hidden;
     z-index: 1;
+    will-change: transform, box-shadow, background, color; /* Hint browser for animation */
 }
 .cta-button::before { /* Hover glow/fill effect */
     content: '';
@@ -120,6 +141,7 @@ img { max-width: 100%; height: auto; display: block; }
     opacity: 0;
     transition: opacity var(--transition-speed) ease;
     z-index: -1;
+    will-change: opacity; /* Hint browser for animation */
 }
 .cta-button:hover {
     transform: translateY(-3px) scale(1.03);
@@ -138,6 +160,7 @@ img { max-width: 100%; height: auto; display: block; }
     top: 0;
     left: 0;
     z-index: 1; /* Behind hero content */
+    will-change: transform, opacity; /* For potential particle movement optimization */
 }
 
 /* --- Header / Hero Section --- */
@@ -178,6 +201,7 @@ img { max-width: 100%; height: auto; display: block; }
     font-weight: 600;
     letter-spacing: 0.5px;
     transition: color var(--transition-speed) ease, text-shadow var(--transition-speed) ease;
+    will-change: color, text-shadow; /* Hint browser for animation */
 }
 .hero nav ul li a:hover {
     color: var(--primary-color);
@@ -204,6 +228,7 @@ img { max-width: 100%; height: auto; display: block; }
     line-height: 1.2;
     display: inline-block; /* Needed for cursor */
     min-height: 1.2em; /* Prevent layout shift during typing */
+    will-change: width, color; /* For typing effect */
 }
 .hero-description {
     font-size: 1.1rem;
@@ -219,6 +244,7 @@ img { max-width: 100%; height: auto; display: block; }
     width: 3px;
     animation: blink 1s infinite;
     margin-left: 4px;
+    will-change: opacity; /* For blinking animation */
 }
 @keyframes blink {
     0%, 100% { opacity: 1; }
@@ -255,6 +281,7 @@ img { max-width: 100%; height: auto; display: block; }
     z-index: 0;
     opacity: 0.5;
     transition: transform var(--transition-speed) var(--transition-bezier);
+    will-change: transform, opacity; /* Hint browser for animation */
 }
 .about-image:hover::before { transform: rotate(-5deg) scale(1.05); }
 .about-text p:last-child { margin-bottom: 0; }
@@ -276,6 +303,7 @@ img { max-width: 100%; height: auto; display: block; }
     text-align: center;
     transition: transform var(--transition-speed) var(--transition-bezier), box-shadow var(--transition-speed) var(--transition-bezier), background var(--transition-speed) ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    will-change: transform, box-shadow, background; /* Hint browser for animation */
 }
 .skill-item:hover {
     transform: translateY(-8px) scale(1.05);
@@ -288,6 +316,7 @@ img { max-width: 100%; height: auto; display: block; }
     margin-bottom: 1rem;
     display: block;
     transition: color var(--transition-speed) ease;
+    will-change: color; /* Hint browser for animation */
 }
 .skill-item:hover i { color: var(--accent-color); }
 .skill-item span {
@@ -313,6 +342,7 @@ img { max-width: 100%; height: auto; display: block; }
     flex-direction: column;
     border: 1px solid var(--border-color);
     position: relative;
+    will-change: transform, box-shadow; /* Hint browser for animation */
 }
 
 .project-card:hover {
@@ -330,6 +360,7 @@ img { max-width: 100%; height: auto; display: block; }
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s ease;
+    will-change: transform; /* Hint browser for animation */
 }
 
 .project-card:hover .project-image img {
@@ -348,6 +379,7 @@ img { max-width: 100%; height: auto; display: block; }
     color: var(--primary-color);
     margin-bottom: 0.5rem;
     animation: pulseText 2s infinite ease-in-out;
+    will-change: transform, opacity; /* Hint browser for animation */
 }
 
 .project-content p {
@@ -388,6 +420,7 @@ img { max-width: 100%; height: auto; display: block; }
     align-items: center;
     gap: 0.4rem;
     font-size: 0.9rem;
+    will-change: color; /* Hint browser for animation */
 }
 
 .project-links a i {
@@ -407,6 +440,7 @@ img { max-width: 100%; height: auto; display: block; }
     transition: transform var(--transition-speed) var(--transition-bezier), box-shadow var(--transition-speed) var(--transition-bezier), background 0.3s ease;
     background: var(--surface-color);
     display: flex;
+    will-change: transform, box-shadow, background; /* Hint browser for animation */
 }
 
 .project-card.more-card:hover {
@@ -427,6 +461,7 @@ img { max-width: 100%; height: auto; display: block; }
     color: var(--primary-color);
     margin: 0;
     animation: pulseText 2s infinite ease-in-out;
+    will-change: transform, opacity; /* Hint browser for animation */
 }
 
 @keyframes pulseText {
@@ -459,11 +494,13 @@ img { max-width: 100%; height: auto; display: block; }
     transition: background var(--transition-speed) ease, color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
     min-width: 220px; /* Minimum width for consistency */
     justify-content: center;
+    will-change: background, color, transform, box-shadow; /* Hint browser for animation */
 }
 .contact-link i {
     font-size: 1.5rem;
     color: var(--primary-color);
     transition: color var(--transition-speed) ease;
+    will-change: color; /* Hint browser for animation */
 }
 .contact-link:hover {
     background: var(--primary-color);
@@ -507,10 +544,12 @@ img { max-width: 100%; height: auto; display: block; }
     justify-content: center;
     align-items: center;
     position: relative; /* For icon positioning */
+    will-change: transform, box-shadow; /* Hint browser for animation */
 }
 #chatbot-toggle i {
     position: absolute; /* Allow icons to overlap */
     transition: opacity 0.3s ease, transform 0.3s ease;
+    will-change: opacity, transform; /* Hint browser for animation */
 }
 #chatbot-toggle .fa-times {
     opacity: 0;
@@ -548,6 +587,7 @@ img { max-width: 100%; height: auto; display: block; }
     transform: translateY(30px) scale(0.95);
     pointer-events: none;
     transition: opacity 0.4s ease, transform 0.4s var(--transition-bezier);
+    will-change: opacity, transform; /* Hint browser for animation */
 }
 #chatbot-container.open #chatbot-window {
     opacity: 1;
@@ -636,6 +676,7 @@ img { max-width: 100%; height: auto; display: block; }
     display: flex;
     align-items: center;
     justify-content: center;
+    will-change: color, transform; /* Hint browser for animation */
 }
 #chatbot-send:hover { color: var(--accent-color); transform: scale(1.1); }
 
@@ -644,6 +685,7 @@ img { max-width: 100%; height: auto; display: block; }
 .animate-on-scroll {
     opacity: 0;
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform; /* Hint browser for animation */
 }
 .animate-on-scroll.fade-in { transform: translateY(30px); }
 .animate-on-scroll.fade-in-up { transform: translateY(50px); }
@@ -658,11 +700,11 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 /* On Load Animations (add directly or via JS) */
-.animate-on-load { opacity: 0; animation-fill-mode: forwards; }
+.animate-on-load { opacity: 0; animation-fill-mode: forwards; will-change: opacity; /* Hint browser for animation */ }
 .fade-down { animation: fadeDown 0.8s 0.2s ease-out forwards; }
 .fade-up { animation: fadeUp 0.8s 0.4s ease-out forwards; }
 .reveal-text { display: inline-block; overflow: hidden; } /* For text reveals */
-.reveal-text > span { display: block; transform: translateY(110%); animation: revealUp 0.8s ease-out forwards; }
+.reveal-text > span { display: block; transform: translateY(110%); animation: revealUp 0.8s ease-out forwards; will-change: transform; /* Hint browser for animation */ }
 .reveal-text.delay-1 > span { animation-delay: 0.6s; }
 .reveal-text.delay-2 > span { animation-delay: 0.8s; }
 
