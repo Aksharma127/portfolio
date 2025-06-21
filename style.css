@@ -12,15 +12,13 @@
     --glow-color-primary: rgba(56, 189, 248, 0.3); /* Blue Glow */
     --glow-color-secondary: rgba(167, 139, 250, 0.3); /* Violet Glow */
     --glow-color-accent: rgba(236, 72, 153, 0.3); /* Pink Glow */
-
     --font-primary: 'Inter', sans-serif;
     --font-secondary: 'Roboto Mono', monospace; /* Techie font */
-
     --transition-speed: 0.4s;
     --transition-bezier: cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother easing */
 }
 
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -93,25 +91,26 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* Call to Action Button */
 .cta-button {
-    display: inline-flex; /* Use flex for icon alignment */
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    color: var(--bg-color); /* Dark text on gradient */
+    color: var(--bg-color);
     padding: 14px 30px;
-    border-radius: 50px; /* Pill shape */
+    border-radius: 50px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: transform var(--transition-speed) var(--transition-bezier), box-shadow var(--transition-speed) var(--transition-bezier);
+    transition: transform var(--transition-speed) var(--transition-bezier), box-shadow var(--transition-speed) var(--transition-bezier), color var(--transition-speed) ease;
     border: none;
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
     z-index: 1;
+    margin: 0.5rem 1rem 0.5rem 0; /* Add margin for spacing between buttons */
 }
-.cta-button::before { /* Hover glow/fill effect */
+.cta-button::before {
     content: '';
     position: absolute;
     top: 0; left: 0;
@@ -124,11 +123,25 @@ img { max-width: 100%; height: auto; display: block; }
 .cta-button:hover {
     transform: translateY(-3px) scale(1.03);
     box-shadow: 0 8px 25px var(--glow-color-primary), 0 0 20px var(--glow-color-accent);
-    color: var(--text-color); /* Light text on hover */
+    color: var(--text-color);
 }
 .cta-button:hover::before { opacity: 1; }
 .cta-button i { transition: transform var(--transition-speed) ease; }
 .cta-button:hover i { transform: translateX(4px); }
+.secondary-button {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    box-shadow: none;
+    transition: border-color var(--transition-speed) ease, color var(--transition-speed) ease, transform var(--transition-speed) var(--transition-bezier), box-shadow var(--transition-speed) var(--transition-bezier);
+}
+.secondary-button:hover {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 25px var(--glow-color-primary);
+}
+.secondary-button::before { display: none; } /* No gradient fill for secondary */
 
 /* --- Particles Background --- */
 #particles-js {
@@ -138,6 +151,8 @@ img { max-width: 100%; height: auto; display: block; }
     top: 0;
     left: 0;
     z-index: 1; /* Behind hero content */
+    opacity: 0; /* Start invisible */
+    transition: opacity 1.5s ease-in-out; /* Fade-in transition */
 }
 
 /* --- Header / Hero Section --- */
@@ -145,14 +160,14 @@ img { max-width: 100%; height: auto; display: block; }
     min-height: 100vh; /* Full viewport height */
     color: var(--text-color);
     display: flex;
-    flex-direction: column; /* Stack nav and content */
-    position: relative; /* For particle positioning */
-    background: var(--bg-color); /* Fallback if particles don't load */
+    flex-direction: column;
+    position: relative;
+    background: var(--bg-color);
 }
 .hero .container {
-    position: relative; /* Ensure content is above particles */
+    position: relative;
     z-index: 2;
-    flex-grow: 1; /* Allow container to take remaining space */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
@@ -161,13 +176,13 @@ img { max-width: 100%; height: auto; display: block; }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 0; /* More padding */
+    padding: 1.5rem 0;
     border-bottom: 1px solid var(--border-color);
 }
 .hero .logo {
     font-size: 1.8rem;
     font-weight: 700;
-    font-family: var(--font-secondary); /* Techie font */
+    font-family: var(--font-secondary);
     color: var(--text-color);
     margin-bottom: 0;
 }
@@ -186,7 +201,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .hero-content {
     text-align: center;
-    margin: auto 0; /* Vertically center content */
+    margin: auto 0;
     padding: 4rem 0;
 }
 .hero-subtitle {
@@ -197,13 +212,13 @@ img { max-width: 100%; height: auto; display: block; }
     letter-spacing: 1px;
 }
 .hero-title {
-    font-size: clamp(2.5rem, 8vw, 5rem); /* Responsive title */
+    font-size: clamp(2.5rem, 8vw, 5rem);
     margin-bottom: 1rem;
-    font-family: var(--font-secondary); /* Tech font */
+    font-family: var(--font-secondary);
     color: var(--text-color);
     line-height: 1.2;
-    display: inline-block; /* Needed for cursor */
-    min-height: 1.2em; /* Prevent layout shift during typing */
+    display: inline-block;
+    min-height: 1.2em;
 }
 .hero-description {
     font-size: 1.1rem;
@@ -212,6 +227,12 @@ img { max-width: 100%; height: auto; display: block; }
     margin-left: auto;
     margin-right: auto;
     color: var(--text-muted);
+}
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem; /* Space between buttons */
 }
 .cursor { /* Typing cursor effect */
     display: inline-block;
@@ -228,21 +249,20 @@ img { max-width: 100%; height: auto; display: block; }
 /* --- About Section --- */
 .about-content {
     display: grid;
-    grid-template-columns: 1fr 1.5fr; /* Image column smaller */
+    grid-template-columns: 1fr 1.5fr;
     align-items: center;
     gap: 4rem;
 }
 .about-image { position: relative; }
 .profile-pic {
-    width: 100%; /* Make image responsive */
-    max-width: 300px; /* Max size */
-    border-radius: 10px; /* Slightly rounded */
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
     border: 3px solid var(--border-color);
-    position: relative; /* For pseudo-element */
+    position: relative;
     z-index: 1;
-    margin: 0 auto; /* Center if grid column is wider */
+    margin: 0 auto;
 }
-/* Decorative element behind image */
 .about-image::before {
     content: '';
     position: absolute;
@@ -267,9 +287,9 @@ img { max-width: 100%; height: auto; display: block; }
 }
 /* Glassmorphism Style */
 .skill-item {
-    background: rgba(55, 65, 81, 0.6); /* Semi-transparent gray */
-    backdrop-filter: blur(10px); /* The Glass effect */
-    -webkit-backdrop-filter: blur(10px); /* Safari */
+    background: rgba(55, 65, 81, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 1.8rem 1rem;
     border-radius: 10px;
@@ -279,7 +299,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .skill-item:hover {
     transform: translateY(-8px) scale(1.05);
-    background: rgba(55, 65, 81, 0.8); /* Darken slightly on hover */
+    background: rgba(55, 65, 81, 0.8);
     box-shadow: 0 8px 25px var(--glow-color-primary);
 }
 .skill-item i {
@@ -415,19 +435,26 @@ img { max-width: 100%; height: auto; display: block; }
     transform: translateY(-8px) scale(1.03);
 }
 
-.project-card.more-card .project-content {
+.project-card.more-card .more-content { /* Changed from .project-content for clarity */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
 
-.project-card.more-card h3 {
+.project-card.more-card h3 { /* Apply to h3 inside .more-content if you add one */
     font-size: 1.6rem;
     color: var(--primary-color);
     margin: 0;
     animation: pulseText 2s infinite ease-in-out;
 }
+.project-card.more-card .more-content {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    font-family: var(--font-secondary);
+}
+
 
 @keyframes pulseText {
     0%, 100% { transform: scale(1); opacity: 1; }
@@ -438,7 +465,7 @@ img { max-width: 100%; height: auto; display: block; }
 .contact-subtitle {
     text-align: center;
     max-width: 600px;
-    margin: -2rem auto 3rem; /* Pull up below heading */
+    margin: -2rem auto 3rem;
     font-size: 1.1rem;
     color: var(--text-muted);
 }
@@ -457,7 +484,7 @@ img { max-width: 100%; height: auto; display: block; }
     gap: 0.8rem;
     color: var(--text-muted);
     transition: background var(--transition-speed) ease, color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    min-width: 220px; /* Minimum width for consistency */
+    min-width: 220px;
     justify-content: center;
 }
 .contact-link i {
@@ -467,7 +494,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .contact-link:hover {
     background: var(--primary-color);
-    color: var(--bg-color); /* Dark text on hover */
+    color: var(--bg-color);
     transform: translateY(-5px);
     box-shadow: 0 5px 15px var(--glow-color-primary);
 }
@@ -499,24 +526,24 @@ img { max-width: 100%; height: auto; display: block; }
     border-radius: 50%;
     width: 60px;
     height: 60px;
-    font-size: 1.6rem; /* Adjusted icon size */
+    font-size: 1.6rem;
     cursor: pointer;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
     transition: transform var(--transition-speed) var(--transition-bezier), box-shadow var(--transition-speed) var(--transition-bezier);
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative; /* For icon positioning */
+    position: relative;
 }
 #chatbot-toggle i {
-    position: absolute; /* Allow icons to overlap */
+    position: absolute;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 #chatbot-toggle .fa-times {
     opacity: 0;
     transform: rotate(-90deg) scale(0.5);
 }
-#chatbot-container.open #chatbot-toggle .fa-ghost { /* Or your chosen icon */
+#chatbot-container.open #chatbot-toggle .fa-ghost {
     opacity: 0;
     transform: rotate(90deg) scale(0.5);
 }
@@ -533,9 +560,9 @@ img { max-width: 100%; height: auto; display: block; }
     position: absolute;
     bottom: 80px;
     right: 0;
-    width: 340px; /* Slightly wider */
-    height: 450px; /* Slightly taller */
-    background: rgba(31, 41, 55, 0.85); /* Dark semi-transparent */
+    width: 340px;
+    height: 450px;
+    background: rgba(31, 41, 55, 0.85);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -557,11 +584,11 @@ img { max-width: 100%; height: auto; display: block; }
 
 #chatbot-header {
     background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-    color: var(--bg-color); /* Dark text */
+    color: var(--bg-color);
     padding: 12px 20px;
     font-weight: 600;
     font-size: 1.1rem;
-    font-family: var(--font-secondary); /* Tech font */
+    font-family: var(--font-secondary);
     text-align: center;
 }
 
@@ -572,7 +599,6 @@ img { max-width: 100%; height: auto; display: block; }
     display: flex;
     flex-direction: column;
     gap: 12px;
-    /* Custom scrollbar */
     scrollbar-width: thin;
     scrollbar-color: var(--primary-color) transparent;
 }
@@ -605,13 +631,13 @@ img { max-width: 100%; height: auto; display: block; }
 #chatbot-input-area {
     display: flex;
     padding: 15px;
-    background: rgba(17, 24, 39, 0.5); /* Darker transparent */
+    background: rgba(17, 24, 39, 0.5);
     border-top: 1px solid var(--border-color);
 }
 #chatbot-input {
     flex-grow: 1;
     border: 1px solid var(--border-color);
-    background: rgba(55, 65, 81, 0.7); /* Semi-transparent input */
+    background: rgba(55, 65, 81, 0.7);
     border-radius: 20px;
     padding: 10px 18px;
     font-size: 0.9rem;
@@ -640,7 +666,6 @@ img { max-width: 100%; height: auto; display: block; }
 #chatbot-send:hover { color: var(--accent-color); transform: scale(1.1); }
 
 /* --- Animation Keyframes & Classes --- */
-/* Initial states for JS-controlled animations */
 .animate-on-scroll {
     opacity: 0;
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -651,17 +676,15 @@ img { max-width: 100%; height: auto; display: block; }
 .animate-on-scroll.slide-in-right { transform: translateX(50px); }
 .animate-on-scroll.scale-up { transform: scale(0.9); }
 
-/* Visible state */
 .animate-on-scroll.is-visible {
     opacity: 1;
     transform: translate(0, 0) scale(1);
 }
 
-/* On Load Animations (add directly or via JS) */
 .animate-on-load { opacity: 0; animation-fill-mode: forwards; }
 .fade-down { animation: fadeDown 0.8s 0.2s ease-out forwards; }
 .fade-up { animation: fadeUp 0.8s 0.4s ease-out forwards; }
-.reveal-text { display: inline-block; overflow: hidden; } /* For text reveals */
+.reveal-text { display: inline-block; overflow: hidden; }
 .reveal-text > span { display: block; transform: translateY(110%); animation: revealUp 0.8s ease-out forwards; }
 .reveal-text.delay-1 > span { animation-delay: 0.6s; }
 .reveal-text.delay-2 > span { animation-delay: 0.8s; }
@@ -684,22 +707,24 @@ img { max-width: 100%; height: auto; display: block; }
     .about-content { grid-template-columns: 1fr; gap: 2rem; }
     .about-image { max-width: 300px; margin: 0 auto 2rem auto; }
     .about-text { text-align: center; }
-    .profile-pic { max-width: 250px; } /* Slightly smaller */
-    .about-image::before { left: 50%; transform: translateX(-50%); top: -10px; } /* Center pseudo element */
+    .profile-pic { max-width: 250px; }
+    .about-image::before { left: 50%; transform: translateX(-50%); top: -10px; }
     .about-image:hover::before { transform: translateX(-50%) rotate(-5deg) scale(1.05); }
+    .hero-buttons { flex-direction: column; align-items: center; } /* Stack buttons on smaller screens */
+    .cta-button { margin: 0.5rem 0; }
 }
 
 @media (max-width: 768px) {
-    html { font-size: 15px; } /* Adjust base size */
+    html { font-size: 15px; }
     .hero nav { flex-direction: column; align-items: center; border-bottom: none; }
     .hero nav ul { margin-top: 1.5rem; padding-left: 0;}
     .hero nav ul li { margin: 0 1rem; }
-    .hero-title { font-size: clamp(2rem, 10vw, 3.5rem); } /* Adjust title size */
+    .hero-title { font-size: clamp(2rem, 10vw, 3.5rem); }
     .hero-description { font-size: 1rem; }
-    .projects-grid { grid-template-columns: 1fr; } /* Stack projects */
+    .projects-grid { grid-template-columns: 1fr; }
     .contact-options { flex-direction: column; align-items: center;}
     .contact-link { width: 90%; max-width: 300px; }
-    #chatbot-window { width: calc(100vw - 40px); max-width: 340px; height: 70vh; max-height: 450px;} /* Chatbot on mobile */
+    #chatbot-window { width: calc(100vw - 40px); max-width: 340px; height: 70vh; max-height: 450px;}
     .section { padding: 4rem 0; }
     h2 { margin-bottom: 2.5rem;}
 }
