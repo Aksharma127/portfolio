@@ -262,7 +262,16 @@ img { max-width: 100%; height: auto; display: block; }
     position: relative;
     z-index: 1;
     margin: 0 auto;
+    transition: transform 0.3s ease-in-out; /* Already set for smooth transitions */
 }
+
+/* Modify this rule to include a slight rotation (tilt) */
+.profile-pic:hover {
+    transform: scale(1.05) rotate(3deg); /* Scales up by 5% and rotates 3 degrees */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Optional: Adds a subtle shadow */
+}
+
+/* Your existing .about-image::before styles */
 .about-image::before {
     content: '';
     position: absolute;
@@ -276,7 +285,11 @@ img { max-width: 100%; height: auto; display: block; }
     opacity: 0.5;
     transition: transform var(--transition-speed) var(--transition-bezier);
 }
-.about-image:hover::before { transform: rotate(-5deg) scale(1.05); }
+
+/* Your existing .about-image:hover::before rule will still apply to the dashed border */
+.about-image:hover::before {
+    transform: rotate(-5deg) scale(1.05);
+}
 .about-text p:last-child { margin-bottom: 0; }
 
 /* --- Skills Section --- */
