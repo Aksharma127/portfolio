@@ -60,61 +60,60 @@ export const articles = [
   },
   {
     slug: "behavioral-ai",
-    title: "Building Scalable Behavioral AI Systems",
+    title: "Headless_BAI: Architecting an Autonomous Behavioral AI Pipeline",
     date: "Mar 2024",
     readTime: "12 min read",
     content: (
       <div className="prose prose-zinc dark:prose-invert max-w-none text-primary">
-        <h3>Problem</h3>
+        <h3>The Problem Space</h3>
         <p>
-          Most AI systems are entirely reactive. They wait for an explicit user query, process it, and respond. They don't understand <em>behavior</em>. They have no concept of user hesitation, confusion, or intent outside of the text box.
+          Conventional AI systems are entirely reactive — they wait for an explicit query. They have zero situational awareness of <em>how</em> a user is behaving before that query is typed. Existing telemetry tools record click events but cannot translate interaction patterns into actionable, low-latency routing context for LLMs. Headless_BAI was engineered to close this gap.
         </p>
 
-        <h3>Core Idea</h3>
+        <h3>Stage 1: High-Throughput Event Ingestion</h3>
         <p>
-          To fix this, we must model user interactions as continuous events. Clicks, scrolls, pauses, navigation loops, and abandonment are all signals. By ingesting these signals, we can proactively route users to specialized models before they even type a query.
+          <strong>The Bottleneck:</strong> Streaming high-velocity telemetry (clicks, scroll depth, dwell time) directly into Postgres caused immediate connection pool exhaustion under any real traffic load.
+        </p>
+        <p>
+          <strong>The Solution:</strong> Decoupled the ingestion layer entirely. A lightweight Vanilla JS client script pushes a granular event stream to a FastAPI gateway, which immediately buffers it into Redis. This architecture strictly isolates the main rendering thread, guaranteeing a system latency cap of <strong>&lt; 50ms</strong>.
         </p>
 
-        <h3>Feature Engineering</h3>
+        <h3>Stage 2: Offline Behavioral Profiling (Nightly Batch)</h3>
         <p>
-          In Headless_BAI, the raw interaction data is transformed into structured metrics:
+          <strong>The Bottleneck:</strong> An initial prototype using DBSCAN for clustering failed in production. Massive variance in session density across different feature sets caused it to produce unstable, incoherent groupings that could not reliably map to LLM prompts.
         </p>
-        <ul>
-          <li><strong>Session Length</strong></li>
-          <li><strong>Interaction Velocity</strong> (actions per minute)</li>
-          <li><strong>Decision Latency</strong> (time to click after hovering)</li>
-          <li><strong>Error Rate</strong> (back-and-forth navigation loops)</li>
-        </ul>
-
-        <h3>Clustering</h3>
         <p>
-          To make sense of this telemetry without supervised labels, I utilized K-Means clustering. The objective is to partition the behavioral features into <code>k</code> distinct behavioral profiles.
+          <strong>The Solution:</strong> Replaced DBSCAN with a nightly Scikit-Learn K-Means batch job. K-Means forces <em>k</em> deterministic centroids, producing stable, predictable cluster coordinates even with varying session density. The objective function minimized:
         </p>
         <div className="bg-surface border border-border/40 p-4 rounded-md my-4 overflow-x-auto font-mono text-sm">
           argmin_S Σ_(i=1)^k Σ_(x∈S_i) ||x - μ_i||²
         </div>
         <p>
-          Why clustering? Because it allows the LLM router to apply a distinct system prompt tailored to the user's specific state. A user showing "high confusion" (long decision latency, high error rate) receives a different intervention than a "power user."
+          The resulting pre-computed cluster centroids are cached daily as static reference data, loaded into memory for next-day real-time inference.
         </p>
 
-        <h3>Architecture</h3>
-        <div className="bg-surface border border-border/40 p-4 rounded-md my-4 overflow-x-auto font-mono text-sm whitespace-pre">
-{`User Events
-    ↓
-Feature Extraction
-    ↓
-Clustering (Redis + Scikit-Learn)
-    ↓
-Behavior Classification
-    ↓
-LLM Router
-    ↓
-Response`}
-        </div>
-
-        <h3>Challenges</h3>
+        <h3>Stage 3: Vectorized Real-Time Inference</h3>
         <p>
-          The hardest part of this system is the <strong>cold start problem</strong>. When a user first lands, there is sparse data, making early classifications volatile. Furthermore, dealing with model drift as UI layouts change requires continuous nightly retraining of the cluster centroids. Finally, doing all this with sub-50ms latency is why the ingestion gateway is decoupled from the ML batch jobs.
+          <strong>The Cold-Start Failure:</strong> Early attempts to classify user intent within a 5-second window suffered from data sparsity. Vectors were under-populated, producing volatile and incorrect cluster assignments that routed users to completely wrong LLM system prompts.
+        </p>
+        <p>
+          <strong>The Engineering Trade-off:</strong> Strategically expanded the observation window to <strong>30 seconds</strong> — trading instant classification for high-confidence behavioral profiling. Within this window, a dedicated microservice aggregates the incoming event stream into a session vector:
+        </p>
+        <div className="bg-surface border border-border/40 p-4 rounded-md my-4 overflow-x-auto font-mono text-sm">
+          V_session = Σ(n=1 to N) v_n
+        </div>
+        <p>
+          Where <code>v_n</code> represents each individual telemetry event vector. The accumulated <code>V_session</code> is compared against the cached K-Means centroids via nearest-neighbor distance calculation to produce a final cluster assignment.
+        </p>
+
+        <h3>Stage 4: Contextual LLM Routing</h3>
+        <p>
+          The cluster assignment is forwarded to the LLM Router, which maps the user's behavioral profile to a pre-optimized system prompt. This prompt is injected into a downstream Llama 3 model, enabling zero-shot contextual routing — delivering responses tailored to the user's real-time intent without any explicit input from the user.
+        </p>
+
+        <h3>Key Engineering Lessons</h3>
+        <p>
+          The most critical architectural insight: <strong>decouple everything that can drift independently.</strong> The ingestion latency SLA, the ML retraining schedule, and the LLM routing logic each have radically different operational tempos. Keeping them as isolated, independently deployable services — connected only by Redis and a static cache artifact — made the entire system robust, observable, and incrementally improvable.
         </p>
       </div>
     )

@@ -41,7 +41,7 @@ export function SelectedWork() {
         <div className="border border-border/60 rounded-2xl p-8 lg:p-12 bg-surface/30">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
             <div>
-              <p className="text-sm font-bold text-accent uppercase tracking-widest mb-4">Behavior-Aware AI Infrastructure</p>
+              <p className="text-sm font-bold text-accent uppercase tracking-widest mb-4">Autonomous Behavioral AI Infrastructure</p>
               <h3 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-medium text-primary tracking-tight">Headless_BAI</h3>
             </div>
             <a 
@@ -58,46 +58,50 @@ export function SelectedWork() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             
             {/* LEFT COLUMN: 40% - CONTEXT & EXPLANATIONS */}
-            <div className="lg:col-span-5 space-y-12">
+            <div className="lg:col-span-5 space-y-10">
               <div className="space-y-4">
-                <h4 className="text-sm font-bold text-secondary uppercase tracking-widest border-b border-border/40 pb-2">The Problem</h4>
+                <h4 className="text-sm font-bold text-secondary uppercase tracking-widest border-b border-border/40 pb-2">Overview</h4>
                 <p className="text-primary leading-relaxed text-lg font-medium">
-                  AI systems typically wait for explicit user queries. They lack situational awareness. Existing telemetry tools record clicks but don't translate interaction patterns into actionable context for LLM routing.
+                  Engineered an autonomous, context-aware telemetry pipeline that tracks real-time user behavior, profiles intent using offline machine learning, and dynamically routes traffic to tailored LLM system prompts — without a single explicit user query.
                 </p>
               </div>
 
               <div className="space-y-4">
-                <h4 className="text-sm font-bold text-secondary uppercase tracking-widest border-b border-border/40 pb-2">Architecture & Decisions</h4>
+                <h4 className="text-sm font-bold text-secondary uppercase tracking-widest border-b border-border/40 pb-2">Engineering Decisions</h4>
                 <div className="space-y-6">
                   <div>
-                    <strong className="text-primary block mb-1">Why decouple ingestion?</strong>
+                    <strong className="text-primary block mb-1">Decoupled Ingestion Gateway</strong>
                     <p className="text-sm text-secondary leading-relaxed">
-                      Writing interaction streams directly to Postgres caused connection pool exhaustion. Introduced a FastAPI + Redis ingestion gateway to buffer events, allowing the main rendering thread to stay sub-50ms.
+                      Direct Postgres writes caused immediate connection pool exhaustion under traffic spikes. Architected a FastAPI + Redis buffer to absorb the high-velocity event stream, strictly isolating the main rendering thread and guaranteeing a &lt;50ms latency cap.
                     </p>
                   </div>
                   <div>
-                    <strong className="text-primary block mb-1">Why K-Means over DBSCAN?</strong>
+                    <strong className="text-primary block mb-1">K-Means over DBSCAN</strong>
                     <p className="text-sm text-secondary leading-relaxed">
-                      DBSCAN struggled with varying density in user sessions. K-Means (running as a nightly Scikit-Learn batch job) provided stable, predictable profile clusters that could easily map to static LLM routing prompts.
+                      Prototype deployment with DBSCAN failed — massive variance in session density produced unstable, unpredictable clusters. Switched to a nightly Scikit-Learn K-Means batch job, forcing deterministic centroids that map cleanly to static LLM routing prompts.
+                    </p>
+                  </div>
+                  <div>
+                    <strong className="text-primary block mb-1">30-Second Observation Window</strong>
+                    <p className="text-sm text-secondary leading-relaxed">
+                      A 5-second cold-start window produced data-sparse vectors, leading to volatile mis-classifications. Strategically expanded the window to 30 seconds, trading instant personalization for high-confidence behavioral profiling.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <h4 className="text-sm font-bold text-secondary uppercase tracking-widest border-b border-border/40 pb-2">Failures & Tradeoffs</h4>
-                <p className="text-sm text-secondary leading-relaxed mb-4">
-                  <strong className="text-primary">The Cold Start Failure:</strong> Initially, the system attempted to classify users within 5 seconds. The data was too sparse, resulting in volatile, inaccurate LLM routing.
-                </p>
-                <p className="text-sm text-secondary leading-relaxed">
-                  <strong className="text-primary">The Tradeoff:</strong> Accepted a 30-second observation window. We traded immediate personalization for high-accuracy behavioral profiling.
-                </p>
+              <div className="space-y-3">
+                <h4 className="text-sm font-bold text-secondary uppercase tracking-widest border-b border-border/40 pb-2">Inference Formula</h4>
+                <div className="bg-background border border-border/60 rounded-lg p-4 font-mono text-sm text-primary">
+                  <span className="text-accent">V</span><sub>session</sub>{" = "}<span className="text-accent">Σ</span><sup>N</sup><sub>n=1</sub>{" vₙ"}
+                </div>
+                <p className="text-xs text-secondary leading-relaxed">Session vector aggregated over the 30s window, compared against cached K-Means centroids for real-time cluster assignment.</p>
               </div>
 
               <div className="space-y-4">
                 <h4 className="text-sm font-bold text-secondary uppercase tracking-widest border-b border-border/40 pb-2">Tech Stack</h4>
                 <div className="flex flex-wrap gap-2">
-                  {["FastAPI", "Python", "Redis", "C++", "Supabase", "Scikit-Learn", "Docker"].map((tech, i) => (
+                  {["FastAPI", "Python", "Redis", "Postgres", "Scikit-Learn", "Llama 3", "Docker"].map((tech, i) => (
                     <span key={i} className="px-3 py-1 rounded-md border border-border/60 text-xs font-bold text-secondary bg-background shadow-sm">
                       {tech}
                     </span>
@@ -109,60 +113,119 @@ export function SelectedWork() {
             {/* RIGHT COLUMN: 60% - ARCHITECTURE DIAGRAM */}
             <div className="lg:col-span-7">
               <div className="h-full w-full bg-background border border-border/60 rounded-xl p-8 flex flex-col">
-                <h4 className="text-sm font-bold text-secondary uppercase tracking-widest mb-8">System Architecture</h4>
-                
-                <div className="flex-1 flex items-center justify-center min-h-[400px]">
-                  {/* SVG ARCHITECTURE DIAGRAM */}
-                  <svg width="100%" height="100%" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg" className="max-w-full">
-                    {/* Elements */}
-                    <rect x="50" y="200" width="120" height="60" rx="8" fill="#FAFAF7" stroke="#2563EB" strokeWidth="2" strokeDasharray="4 4" />
-                    <text x="110" y="235" fill="#18181B" fontSize="14" fontWeight="600" textAnchor="middle">Vanilla JS Client</text>
+                <h4 className="text-sm font-bold text-secondary uppercase tracking-widest mb-2">System Architecture</h4>
+                <p className="text-xs text-secondary mb-6">Real-time pipeline (top) · Offline ML batch (bottom)</p>
 
-                    <rect x="250" y="200" width="120" height="60" rx="8" fill="#FFFFFF" stroke="#18181B" strokeWidth="2"/>
-                    <text x="310" y="235" fill="#18181B" fontSize="14" fontWeight="600" textAnchor="middle">FastAPI Gateway</text>
-
-                    <rect x="450" y="100" width="120" height="60" rx="8" fill="#FFFFFF" stroke="#18181B" strokeWidth="2"/>
-                    <text x="510" y="135" fill="#18181B" fontSize="14" fontWeight="600" textAnchor="middle">Redis Buffer</text>
-
-                    <rect x="450" y="300" width="120" height="60" rx="8" fill="#FFFFFF" stroke="#18181B" strokeWidth="2"/>
-                    <text x="510" y="335" fill="#18181B" fontSize="14" fontWeight="600" textAnchor="middle">Scikit-Learn ML</text>
-
-                    <rect x="650" y="200" width="120" height="60" rx="8" fill="#18181B" stroke="#18181B" strokeWidth="2"/>
-                    <text x="710" y="235" fill="#FFFFFF" fontSize="14" fontWeight="600" textAnchor="middle">LLM Router</text>
-
-                    {/* Arrows */}
-                    <path d="M170 230 L240 230" stroke="#71717A" strokeWidth="2" markerEnd="url(#arrow)"/>
-                    <path d="M370 215 L440 145" stroke="#71717A" strokeWidth="2" markerEnd="url(#arrow)"/>
-                    <path d="M370 245 L440 315" stroke="#71717A" strokeWidth="2" markerEnd="url(#arrow)"/>
-                    <path d="M570 130 L650 215" stroke="#71717A" strokeWidth="2" markerEnd="url(#arrow)"/>
-                    <path d="M570 330 L650 245" stroke="#71717A" strokeWidth="2" markerEnd="url(#arrow)"/>
-
-                    {/* Labels */}
-                    <text x="205" y="220" fill="#71717A" fontSize="12" textAnchor="middle" fontWeight="500">Events</text>
-                    <text x="405" y="170" fill="#71717A" fontSize="12" textAnchor="middle" fontWeight="500">Cache</text>
-                    <text x="405" y="290" fill="#71717A" fontSize="12" textAnchor="middle" fontWeight="500">Batch Job</text>
-
-                    {/* Defs */}
+                <div className="flex-1 flex items-center justify-center min-h-[420px]">
+                  <svg width="100%" height="100%" viewBox="0 0 860 520" fill="none" xmlns="http://www.w3.org/2000/svg" className="max-w-full">
                     <defs>
-                      <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                      <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
                         <path d="M 0 0 L 10 5 L 0 10 z" fill="#71717A" />
                       </marker>
+                      <marker id="arrBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB" />
+                      </marker>
                     </defs>
+
+                    {/* === LANE BACKGROUNDS === */}
+                    {/* Real-Time Lane */}
+                    <rect x="10" y="10" width="840" height="210" rx="10" fill="#F4F4F5" fillOpacity="0.5" stroke="#D4D4D8" strokeWidth="1" strokeDasharray="6 3"/>
+                    <text x="22" y="30" fill="#71717A" fontSize="11" fontWeight="700" letterSpacing="2">REAL-TIME PIPELINE</text>
+
+                    {/* Offline Lane */}
+                    <rect x="10" y="280" width="840" height="210" rx="10" fill="#EFF6FF" fillOpacity="0.5" stroke="#BFDBFE" strokeWidth="1" strokeDasharray="6 3"/>
+                    <text x="22" y="300" fill="#3B82F6" fontSize="11" fontWeight="700" letterSpacing="2">OFFLINE BATCH PIPELINE</text>
+
+                    {/* === REAL-TIME NODES === */}
+                    {/* 1. Vanilla JS Client */}
+                    <rect x="30" y="80" width="130" height="56" rx="8" fill="#FFFFFF" stroke="#2563EB" strokeWidth="2" strokeDasharray="4 3"/>
+                    <text x="95" y="105" fill="#18181B" fontSize="12" fontWeight="600" textAnchor="middle">Vanilla JS</text>
+                    <text x="95" y="122" fill="#71717A" fontSize="10" textAnchor="middle">Client Telemetry</text>
+
+                    {/* 2. FastAPI Gateway */}
+                    <rect x="230" y="80" width="130" height="56" rx="8" fill="#FFFFFF" stroke="#18181B" strokeWidth="2"/>
+                    <text x="295" y="105" fill="#18181B" fontSize="12" fontWeight="600" textAnchor="middle">FastAPI</text>
+                    <text x="295" y="122" fill="#71717A" fontSize="10" textAnchor="middle">Ingestion Gateway</text>
+
+                    {/* 3. Redis Buffer */}
+                    <rect x="430" y="80" width="130" height="56" rx="8" fill="#FFFFFF" stroke="#18181B" strokeWidth="2"/>
+                    <text x="495" y="105" fill="#18181B" fontSize="12" fontWeight="600" textAnchor="middle">Redis</text>
+                    <text x="495" y="122" fill="#71717A" fontSize="10" textAnchor="middle">In-Memory Buffer</text>
+
+                    {/* 4. Realtime Classifier */}
+                    <rect x="630" y="80" width="140" height="56" rx="8" fill="#18181B" stroke="#18181B" strokeWidth="2"/>
+                    <text x="700" y="105" fill="#FFFFFF" fontSize="12" fontWeight="600" textAnchor="middle">RT Classifier</text>
+                    <text x="700" y="122" fill="#A1A1AA" fontSize="10" textAnchor="middle">30s Window · Scikit</text>
+
+                    {/* === OFFLINE NODES === */}
+                    {/* 5. Postgres */}
+                    <rect x="30" y="340" width="130" height="56" rx="8" fill="#FFFFFF" stroke="#3B82F6" strokeWidth="2"/>
+                    <text x="95" y="365" fill="#18181B" fontSize="12" fontWeight="600" textAnchor="middle">Postgres</text>
+                    <text x="95" y="382" fill="#71717A" fontSize="10" textAnchor="middle">Historic Events</text>
+
+                    {/* 6. K-Means Batch Job */}
+                    <rect x="230" y="340" width="130" height="56" rx="8" fill="#FFFFFF" stroke="#3B82F6" strokeWidth="2"/>
+                    <text x="295" y="365" fill="#18181B" fontSize="12" fontWeight="600" textAnchor="middle">K-Means Job</text>
+                    <text x="295" y="382" fill="#71717A" fontSize="10" textAnchor="middle">Nightly Batch Train</text>
+
+                    {/* 7. Static Clusters */}
+                    <rect x="430" y="340" width="130" height="56" rx="8" fill="#FFFFFF" stroke="#3B82F6" strokeWidth="2"/>
+                    <text x="495" y="365" fill="#18181B" fontSize="12" fontWeight="600" textAnchor="middle">Cluster Cache</text>
+                    <text x="495" y="382" fill="#71717A" fontSize="10" textAnchor="middle">Static Centroids</text>
+
+                    {/* === LLM OUTPUT NODE (shared) === */}
+                    {/* LLM Router */}
+                    <rect x="620" y="220" width="150" height="56" rx="8" fill="#1D4ED8" stroke="#1D4ED8" strokeWidth="2"/>
+                    <text x="695" y="245" fill="#FFFFFF" fontSize="12" fontWeight="700" textAnchor="middle">LLM Router</text>
+                    <text x="695" y="262" fill="#BFDBFE" fontSize="10" textAnchor="middle">Llama 3 · Prompt Inject</text>
+
+                    {/* === REAL-TIME ARROWS === */}
+                    <path d="M160 108 L222 108" stroke="#71717A" strokeWidth="1.5" markerEnd="url(#arr)"/>
+                    <text x="191" y="101" fill="#71717A" fontSize="9" textAnchor="middle">events</text>
+
+                    <path d="M360 108 L422 108" stroke="#71717A" strokeWidth="1.5" markerEnd="url(#arr)"/>
+                    <text x="391" y="101" fill="#71717A" fontSize="9" textAnchor="middle">push</text>
+
+                    <path d="M560 108 L622 108" stroke="#71717A" strokeWidth="1.5" markerEnd="url(#arr)"/>
+                    <text x="591" y="101" fill="#71717A" fontSize="9" textAnchor="middle">stream</text>
+
+                    {/* RT Classifier → LLM Router */}
+                    <path d="M700 136 L695 212" stroke="#18181B" strokeWidth="1.5" markerEnd="url(#arr)"/>
+                    <text x="712" y="178" fill="#18181B" fontSize="9" textAnchor="start">cluster</text>
+
+                    {/* === OFFLINE ARROWS === */}
+                    <path d="M160 368 L222 368" stroke="#3B82F6" strokeWidth="1.5" markerEnd="url(#arrBlue)"/>
+                    <text x="191" y="361" fill="#3B82F6" fontSize="9" textAnchor="middle">batch</text>
+
+                    <path d="M360 368 L422 368" stroke="#3B82F6" strokeWidth="1.5" markerEnd="url(#arrBlue)"/>
+                    <text x="391" y="361" fill="#3B82F6" fontSize="9" textAnchor="middle">centroids</text>
+
+                    {/* Redis → Postgres (flush) */}
+                    <path d="M495 136 L495 270 Q495 290 475 290 L95 290 Q75 290 75 310 L75 332" stroke="#D4D4D8" strokeWidth="1.2" strokeDasharray="5 3" markerEnd="url(#arr)"/>
+                    <text x="280" y="285" fill="#A1A1AA" fontSize="9" textAnchor="middle">nightly flush</text>
+
+                    {/* Cluster Cache → RT Classifier (load into memory) */}
+                    <path d="M495 340 L495 180 L622 180 L622 136" stroke="#3B82F6" strokeWidth="1.2" strokeDasharray="5 3" markerEnd="url(#arrBlue)"/>
+                    <text x="548" y="175" fill="#3B82F6" fontSize="9" textAnchor="start">load daily</text>
                   </svg>
                 </div>
 
-                <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t border-border/40">
+                <div className="grid grid-cols-4 gap-3 mt-6 pt-6 border-t border-border/40">
                   <div>
                     <p className="text-xs font-bold text-secondary uppercase tracking-widest mb-1">Latency Cap</p>
-                    <p className="text-xl font-heading font-medium text-primary">&lt; 50ms</p>
+                    <p className="text-lg font-heading font-medium text-primary">&lt; 50ms</p>
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-secondary uppercase tracking-widest mb-1">Observation Window</p>
-                    <p className="text-xl font-heading font-medium text-primary">30s</p>
+                    <p className="text-xs font-bold text-secondary uppercase tracking-widest mb-1">Obs. Window</p>
+                    <p className="text-lg font-heading font-medium text-primary">30s</p>
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-secondary uppercase tracking-widest mb-1">Decoupled ML Jobs</p>
-                    <p className="text-xl font-heading font-medium text-primary">Nightly</p>
+                    <p className="text-xs font-bold text-secondary uppercase tracking-widest mb-1">ML Retraining</p>
+                    <p className="text-lg font-heading font-medium text-primary">Nightly</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-secondary uppercase tracking-widest mb-1">Routing Model</p>
+                    <p className="text-lg font-heading font-medium text-primary">Llama 3</p>
                   </div>
                 </div>
               </div>
