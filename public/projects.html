@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Projects · Akshit Sharma</title>
+<meta name="description" content="Case studies and source for Akshit Sharma's projects.">
+<meta name="theme-color" content="#eef2f6">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header"><div class="frame">
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>Akshit Sharma</a>
+<nav class="nav" aria-label="Main"><a href="index.html">Home</a><a href="projects.html" aria-current="page">Projects</a><a href="experience.html">Experience</a><a href="index.html#contact">Contact</a><a class="nav-cta" href="/Akshit_Sharma_Resume.pdf">Resume</a></nav>
+</div></header>
+<main>
+<section class="page-head" style="padding:0"><div class="frame">
+<p class="label">Projects</p>
+<h1>What I've<br>built</h1>
+<p class="lede">Each case study shows how the system works, the decisions behind it, and where every number comes from. All of them link to public source code.</p>
+</div></section>
+<section><div class="frame">
+<div class="cards"><article class="card feature p-headless-bai">
+<div class="viz" aria-hidden="true"><canvas data-viz="kmeans"></canvas><span class="viz-tag">k-means · 3 cohorts</span></div>
+<div class="card-body">
+<p class="kind">B.Tech capstone · Jan–Jun 2026</p>
+<h3><a href="projects/headless-bai.html">Headless_BAI</a></h3>
+<p class="short">A web page that reorders its own sections based on how visitors behave. Interaction telemetry is filtered for bots, clustered into behavioral cohorts with K-Means, and each cohort gets its own layout.</p>
+<dl class="metrics"><div><dt>31.42%</dt><dd>lower friction score vs. baseline, on a 10,800-event synthetic benchmark</dd></div><div><dt>< 1 ms</dt><dd>main-thread cost of the telemetry script</dd></div><div><dt>30 / 30</dt><dd>pytest tests passing in CI</dd></div></dl>
+<ul class="tags"><li>Python</li><li>FastAPI</li><li>Redis</li><li>Supabase</li><li>scikit-learn</li><li>Llama-3-8B</li><li>C++ / Chromium</li><li>Docker</li></ul>
+<div class="foot"><a class="repo" href="https://github.com/Aksharma127/Headless_BAI_orignal">GitHub ↗</a><span class="go">Case study →</span></div>
+</div>
+</article><article class="card half p-geosmart-advisor">
+<div class="viz" aria-hidden="true"><canvas data-viz="heatmap"></canvas><span class="viz-tag">site score heatmap</span></div>
+<div class="card-body">
+<p class="kind">Geospatial ML · Jun–Sep 2025</p>
+<h3><a href="projects/geosmart-advisor.html">GeoSmart Advisor</a></h3>
+<p class="short">Scores a map location for how well a given type of business would do there. Live OpenStreetMap and Foursquare data go through a Julia scoring core, and a local Phi-3-mini model writes the site report.</p>
+<dl class="metrics"><div><dt>< 180 ms</dt><dd>Julia scoring for 100 candidates (NumPy: ~2.1 s)</dd></div><div><dt>< 420 MB</dt><dd>peak RAM per pipeline stage</dd></div></dl>
+
+<div class="foot"><a class="repo" href="https://github.com/Aksharma127/GeoSmart_Advisor">GitHub ↗</a><span class="go">Case study →</span></div>
+</div>
+</article><article class="card half p-docqa">
+<div class="viz" aria-hidden="true"><canvas data-viz="topk"></canvas><span class="viz-tag">semantic search · k = 5</span></div>
+<div class="card-body">
+<p class="kind">Local RAG · Feb–Mar 2026</p>
+<h3><a href="projects/docqa.html">docqa</a></h3>
+<p class="short">Question answering over your own PDFs and notes that never leaves your machine. Embeddings, vector search and the language model all run locally, and every answer points back to the file, page and section it came from.</p>
+<dl class="metrics"><div><dt>0</dt><dd>paid APIs or network calls at query time</dd></div><div><dt>SHA-256</dt><dd>content-hash indexing: unchanged files are skipped</dd></div></dl>
+
+<div class="foot"><a class="repo" href="https://github.com/Aksharma127/docqa-project">GitHub ↗</a><span class="go">Case study →</span></div>
+</div>
+</article><article class="card half p-edge-video-analytics">
+<div class="viz" aria-hidden="true"><canvas data-viz="detect"></canvas><span class="viz-tag">yolov8n detections</span></div>
+<div class="card-body">
+<p class="kind">C++ inference pipeline</p>
+<h3><a href="projects/edge-video-analytics.html">Edge Video Analytics</a></h3>
+<p class="short">Object detection on video files or a webcam, written in C++17 with no Python in the inference path. YOLOv8n runs through OpenCV's DNN module, with custom NMS and per-frame latency readouts.</p>
+<dl class="metrics"><div><dt>336 ms</dt><dd>average inference per frame on CPU</dd></div><div><dt>647</dt><dd>frames in the 768×432 benchmark video</dd></div></dl>
+
+<div class="foot"><a class="repo" href="https://github.com/Aksharma127/Edge-Optimized-Video-Analytics-Pipeline">GitHub ↗</a><span class="go">Case study →</span></div>
+</div>
+</article><article class="card half p-chernobyl-kinetics">
+<div class="viz" aria-hidden="true"><canvas data-viz="chain"></canvas><span class="viz-tag">neutron chain reaction</span></div>
+<div class="card-body">
+<p class="kind">Simulation · Julia</p>
+<h3><a href="projects/chernobyl-kinetics.html">ChernobylKinetics</a></h3>
+<p class="short">A reconstruction of the 1986 Chernobyl reactor excursion as a point-kinetics model: 11 coupled ODEs solved with DifferentialEquations.jl, with parameters from the IAEA INSAG-7 report, run across five what-if scenarios.</p>
+<dl class="metrics"><div><dt>11</dt><dd>coupled ODEs in the reactor model</dd></div><div><dt>6</dt><dd>delayed-neutron precursor groups</dd></div></dl>
+
+<div class="foot"><a class="repo" href="https://github.com/Aksharma127/ChernobylKinetics">GitHub ↗</a><span class="go">Case study →</span></div>
+</div>
+</article></div>
+</div></section>
+<section><div class="frame">
+<div class="section-head"><div><span class="label">Smaller and older projects</span><h2>Other work</h2></div><a class="more" href="https://github.com/Aksharma127?tab=repositories">All repositories ↗</a></div>
+<div class="mini-list"><article class="mini"><h3><a href="https://github.com/Aksharma127/cortex">Cortex</a></h3><p>Document ingestion backend for a research assistant. Loads PDF, DOCX, TXT and Markdown, chunks and embeds in batches, keeps metadata in PostgreSQL and vectors in ChromaDB, served through FastAPI. Phase 1 is done; agent orchestration is the next phase.</p><ul class="tags"><li>FastAPI</li><li>PostgreSQL</li><li>ChromaDB</li><li>Docker Compose</li></ul></article><article class="mini"><h3><a href="https://github.com/Aksharma127/Community-Management-System">Community Management System</a></h3><p>Solo Java rebuild of a community management app with a layered DAO design, SQLite storage, PreparedStatements throughout and salted SHA-256 password hashing.</p><ul class="tags"><li>Java</li><li>SQLite</li><li>JDBC</li></ul></article><article class="mini"><h3><a href="https://github.com/Aksharma127/Compiler-in-cpp">Compiler in C++</a></h3><p>A small compiler written from scratch in C++ to learn lexing, parsing and code generation.</p><ul class="tags"><li>C++</li></ul></article><article class="mini"><h3><a href="https://github.com/Aksharma127/RayTracing-master">Ray Tracer</a></h3><p>CPU ray tracer in C++: rays, materials, shading and image output.</p><ul class="tags"><li>C++</li></ul></article><article class="mini"><h3><a href="https://github.com/Aksharma127/Minecraft">Voxel Engine</a></h3><p>A Minecraft-style voxel world renderer in C++.</p><ul class="tags"><li>C++</li><li>OpenGL</li></ul></article><article class="mini"><h3><a href="https://github.com/Aksharma127/dream11-predicting-model">Dream11 Prediction Model</a></h3><p>Model for predicting IPL fantasy-cricket team picks from player match data.</p><ul class="tags"><li>Python</li><li>scikit-learn</li></ul></article><article class="mini"><h3><a href="https://github.com/Aksharma127/Geo-Processing-practice">Geo-Processing Practice</a></h3><p>Notebooks from the ISRO Geo Processing with Python course: raster and vector processing.</p><ul class="tags"><li>Python</li><li>Jupyter</li><li>GIS</li></ul></article></div>
+</div></section>
+</main>
+<footer class="site-footer"><div class="frame">
+<span>Akshit Sharma · Updated October 2026</span>
+<span><a href="https://github.com/Aksharma127">GitHub</a> · <a href="https://www.linkedin.com/in/akshit-sharma-52660a251/">LinkedIn</a> · <a href="mailto:asharma53858@gmail.com">asharma53858@gmail.com</a></span>
+</div></footer>
+<script src="app.js"></script>
+</body>
+</html>

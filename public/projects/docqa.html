@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>docqa · Akshit Sharma</title>
+<meta name="description" content="Private question answering over your own documents. Everything runs locally and every answer cites file, page and section.">
+<meta name="theme-color" content="#eef2f6">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="site-header"><div class="frame">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>Akshit Sharma</a>
+<nav class="nav" aria-label="Main"><a href="../index.html">Home</a><a href="../projects.html" aria-current="page">Projects</a><a href="../experience.html">Experience</a><a href="../index.html#contact">Contact</a><a class="nav-cta" href="/Akshit_Sharma_Resume.pdf">Resume</a></nav>
+</div></header>
+<main>
+<div class="p-docqa">
+<section class="case-hero" style="padding:0"><div class="frame">
+<div class="grid">
+<div>
+<p class="crumbs"><a href="../projects.html">Projects</a> / docqa</p>
+<p class="kind">Local RAG · Feb–Mar 2026</p>
+<h1>docqa</h1>
+<p class="lede">Private question answering over your own documents. Everything runs locally and every answer cites file, page and section.</p>
+<div class="actions"><a class="btn primary" href="https://github.com/Aksharma127/docqa-project">Source on GitHub <span class="arrow">↗</span></a><a class="btn" href="../projects.html">All projects</a></div>
+</div>
+<div class="case-viz" aria-hidden="true"><canvas data-viz="topk"></canvas><span class="viz-tag">semantic search · k = 5</span></div>
+</div></div></section>
+<div class="frame"><dl class="facts"><div><dt>0</dt><dd>external API calls</dd></div><div><dt>384</dt><dd>embedding dimensions</dd></div><div><dt>~1 GB</dt><dd>local LLM size</dd></div><div><dt>k = 5</dt><dd>chunks retrieved per question</dd></div></dl></div>
+<div class="frame"><div class="case-body"><div class="block"><h2>What it does</h2><div><div class="prose"><p>docqa answers questions about a folder of PDFs, text files and Markdown notes. Nothing is sent to an external service: embedding, vector search and the language model all run on the local machine. Each answer lists the source file, page and section of the chunks it used, so it can be checked.</p><p>It has a Python API and a command-line interface.</p></div></div></div><div class="block"><h2>How data moves through it</h2><div><ol class="flow"><li class="node"><strong>Extract</strong><span>PyMuPDF for PDFs; TXT and Markdown with encoding fallbacks; page and section kept</span></li><li class="wire" aria-hidden="true"></li><li class="node"><strong>Chunk</strong><span>Recursive splitter with overlap</span></li><li class="wire" aria-hidden="true"></li><li class="node"><strong>Embed</strong><span>all-MiniLM-L6-v2 (384-dim), cached in SQLite</span></li><li class="wire" aria-hidden="true"></li><li class="node"><strong>Store</strong><span>Persistent ChromaDB collection, cosine similarity</span></li><li class="wire" aria-hidden="true"></li><li class="node"><strong>Retrieve</strong><span>Top-k semantic search (k = 5 by default)</span></li><li class="wire" aria-hidden="true"></li><li class="node"><strong>Answer</strong><span>Qwen2.5-1.5B-Instruct via llama.cpp, with an answer cache</span></li></ol></div></div><div class="block"><h2>Design decisions</h2><div><div class="decisions"><div class="decision"><h3>Index by content hash</h3><p>Every file is tracked by its SHA-256 hash. Re-running the indexer skips unchanged files, re-indexes modified ones and removes chunks for deleted ones, so a large folder doesn't get re-embedded on every run.</p></div><div class="decision"><h3>Keep provenance on every chunk</h3><p>Chunks carry file, page and section metadata from extraction onward. The answer can then cite exactly where it came from instead of just returning text.</p></div><div class="decision"><h3>A small quantized model</h3><p>Qwen2.5-1.5B in Q4_K_M is about 1 GB, so it runs on an ordinary laptop. The model file is configurable for bigger machines.</p></div><div class="decision"><h3>Persistent caches with a known limit</h3><p>Both caches are SQLite and survive restarts. SQLite allows one writer at a time, which is fine for a single-user tool and is documented as the trade-off.</p></div></div></div></div><div class="block"><h2>Testing</h2><div><div class="prose"><p>Unit tests cover chunk boundaries and overlap, encoding fallbacks and malformed PDFs in the extractors, the indexer's add, update, skip and delete paths, cache persistence, and RAG context building.</p></div></div></div>
+<div class="block"><h2>Stack</h2><div><ul class="tags"><li>Python</li><li>ChromaDB</li><li>sentence-transformers</li><li>llama.cpp</li><li>PyMuPDF</li><li>SQLite</li><li>pytest</li></ul></div></div>
+</div>
+<nav class="next-prev" aria-label="More case studies"><a href="geosmart-advisor.html">← GeoSmart Advisor</a><a href="edge-video-analytics.html">Edge Video Analytics →</a></nav>
+</div>
+</div>
+</main>
+<footer class="site-footer"><div class="frame">
+<span>Akshit Sharma · Updated October 2026</span>
+<span><a href="https://github.com/Aksharma127">GitHub</a> · <a href="https://www.linkedin.com/in/akshit-sharma-52660a251/">LinkedIn</a> · <a href="mailto:asharma53858@gmail.com">asharma53858@gmail.com</a></span>
+</div></footer>
+<script src="../app.js"></script>
+</body>
+</html>
