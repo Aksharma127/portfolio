@@ -4,97 +4,144 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Projects · Akshit Sharma</title>
-<meta name="description" content="Case studies and source for Akshit Sharma's projects.">
-<meta name="theme-color" content="#eef1f4">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<meta name="description" content="Detail drawings and source for Akshit Sharma's projects.">
+<meta name="theme-color" content="#eef0eb">
+<link rel="preload" href="fonts/big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="site-header"><div class="frame">
-<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>Akshit Sharma</a>
-<nav class="nav" aria-label="Main"><a href="index.html" class="hide-sm">Home</a><a href="projects.html" aria-current="page">Projects</a><a href="experience.html" class="hide-xs">Experience</a><a class="hide-sm" href="index.html#contact">Contact</a><a class="nav-cta" href="/Akshit_Sharma_Resume.pdf">Resume</a></nav>
+<header class="site-header"><div class="bar">
+<a class="brand" href="index.html"><span class="brand-no">AS-2026</span><span class="brand-name">Akshit Sharma</span></a>
+<nav class="nav" aria-label="Main"><a href="index.html" class="hide-sm">Drawing set</a><a href="projects.html" aria-current="page">Projects</a><a href="experience.html" class="hide-xs">Experience</a><a class="hide-sm" href="index.html#contact">Contact</a><a class="nav-cta" href="/Akshit_Sharma_Resume.pdf">Resume ↗</a></nav>
 </div></header>
 <main>
-<section class="page-head"><div class="frame">
-<p class="label">Projects · 5 case studies</p>
-<h1>What I've<br><span class="o">built</span></h1>
-<div class="lede-row"><p class="lede">Each case study shows how the system works, the decisions behind it, and where every number comes from. All of them link to public source code.</p></div>
-</div></section>
-<div class="scenes" style="padding-bottom:clamp(60px,8vw,120px)"><article class="scene p-headless-bai" style="--i:0">
-<div class="scene-text">
-<div>
-<p class="kind">B.Tech capstone · Jan–Jun 2026</p>
-<h3><a href="projects/headless-bai.html">Headless_BAI</a></h3>
+<section class="sheet" data-sheet="00">
+<div class="strip"><span class="no">Index</span><span class="t">Drawing index</span><span class="k">Projects</span></div>
+<div class="zones" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
+<div class="sheet-pad">
+<h1 class="page-title">Drawing index</h1>
+<p class="lede-sm">Five detail drawings, each with public source. Every number comes from the repo README or the capstone report.</p>
+<div class="table-wrap"><table class="index"><thead><tr><th>Sheet</th><th>Project</th><th>Type</th><th>Key value</th><th>Specification</th></tr></thead><tbody><tr><td class="num">02</td><td><a href="projects/headless-bai.html"><strong>Headless_BAI</strong></a></td><td>B.Tech capstone · Jan–Jun 2026</td><td class="num">31.42%</td><td class="desc">lower friction score vs. baseline, on a 10,800-event synthetic benchmark</td></tr><tr><td class="num">03</td><td><a href="projects/geosmart-advisor.html"><strong>GeoSmart Advisor</strong></a></td><td>Geospatial ML · Jun–Sep 2025</td><td class="num">< 180 ms</td><td class="desc">Julia scoring for 100 candidates (NumPy: ~2.1 s)</td></tr><tr><td class="num">04</td><td><a href="projects/docqa.html"><strong>docqa</strong></a></td><td>Local RAG · Feb–Mar 2026</td><td class="num">0</td><td class="desc">paid APIs or network calls at query time</td></tr><tr><td class="num">05</td><td><a href="projects/edge-video-analytics.html"><strong>Edge Video Analytics</strong></a></td><td>C++ inference pipeline</td><td class="num">336 ms</td><td class="desc">average inference per frame on CPU</td></tr><tr><td class="num">06</td><td><a href="projects/chernobyl-kinetics.html"><strong>ChernobylKinetics</strong></a></td><td>Simulation · Julia</td><td class="num">11</td><td class="desc">coupled ODEs in the reactor model</td></tr></tbody></table></div>
+</div>
+</section>
+<section class="sheet" data-sheet="02" id="headless-bai">
+<div class="strip"><span class="no">Sheet 02 / 09</span><span class="t">Headless_BAI</span><span class="k">B.Tech capstone · Jan–Jun 2026</span><a href="https://github.com/Aksharma127/Headless_BAI_orignal">Source ↗</a></div>
+<div class="zones" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
+<div class="proj">
+<div class="proj-text">
+<h2 class="proj-title"><a href="projects/headless-bai.html">Headless_<wbr>BAI</a></h2>
 <p class="short">A web page that reorders its own sections based on how visitors behave. Interaction telemetry is filtered for bots, clustered into behavioral cohorts with K-Means, and each cohort gets its own layout.</p>
+<table class="spec"><thead><tr><th>Value</th><th>Specification</th></tr></thead><tbody><tr><td class='num'>31.42%</td><td>lower friction score vs. baseline, on a 10,800-event synthetic benchmark</td></tr><tr><td class='num'>< 1 ms</td><td>main-thread cost of the telemetry script</td></tr><tr><td class='num'>30 / 30</td><td>pytest tests passing in CI</td></tr></tbody></table>
+<div class="actions"><a class="btn primary" href="projects/headless-bai.html">Open detail drawing <span class="arrow">→</span></a><a class="btn" href="https://github.com/Aksharma127/Headless_BAI_orignal">Source <span class="arrow">↗</span></a></div>
 </div>
-<div class="scene-bottom">
-<dl class="metrics"><div><dt>31.42%</dt><dd>lower friction score vs. baseline, on a 10,800-event synthetic benchmark</dd></div><div><dt>< 1 ms</dt><dd>main-thread cost of the telemetry script</dd></div><div><dt>30 / 30</dt><dd>pytest tests passing in CI</dd></div></dl>
-<div class="actions"><a class="btn primary" href="projects/headless-bai.html">Read the case study <span class="arrow">→</span></a><a class="btn" href="https://github.com/Aksharma127/Headless_BAI_orignal">GitHub <span class="arrow">↗</span></a></div>
+<figure class="drawing proj-fig">
+<figcaption class="fig-no">Fig. 2 · Data path</figcaption>
+<div class="dwg-wide"><svg class="dwg" viewBox="0 0 708 310" role="img" aria-label="Block diagram: sensor.js to FastAPI to Redis to Supabase to Offline worker to actuator.js"><defs><marker id="ar-headless-bai" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" class="ah"/></marker></defs><line class="ln draw" x1="218" y1="107.0" x2="260" y2="107.0" marker-end="url(#ar-headless-bai)"/><line class="ln draw" x1="446" y1="107.0" x2="488" y2="107.0" marker-end="url(#ar-headless-bai)"/><line class="ln draw" x1="582.0" y1="144" x2="582.0" y2="204" marker-end="url(#ar-headless-bai)"/><line class="ln draw" x1="490" y1="243.0" x2="448" y2="243.0" marker-end="url(#ar-headless-bai)"/><line class="ln draw" x1="262" y1="243.0" x2="220" y2="243.0" marker-end="url(#ar-headless-bai)"/><rect class="bx" x="34" y="70" width="184" height="74"/><circle class="bl" cx="34" cy="70" r="11"/><text class="bln" x="34" y="74" text-anchor="middle">1</text><text class="bxn" x="50" y="96">sensor.js</text><text class="bxs" x="50" y="115">Browser telemetry,</text><text class="bxs" x="50" y="129">micro-batches</text><rect class="bx" x="262" y="70" width="184" height="74"/><circle class="bl" cx="262" cy="70" r="11"/><text class="bln" x="262" y="74" text-anchor="middle">2</text><text class="bxn" x="278" y="96">FastAPI</text><text class="bxs" x="278" y="115">Pydantic validation</text><rect class="bx" x="490" y="70" width="184" height="74"/><circle class="bl" cx="490" cy="70" r="11"/><text class="bln" x="490" y="74" text-anchor="middle">3</text><text class="bxn" x="506" y="96">Redis</text><text class="bxs" x="506" y="115">Buffers every event</text><rect class="bx" x="490" y="206" width="184" height="74"/><circle class="bl" cx="490" cy="206" r="11"/><text class="bln" x="490" y="210" text-anchor="middle">4</text><text class="bxn" x="506" y="232">Supabase</text><text class="bxs" x="506" y="251">Raw events in SQL</text><rect class="bx" x="262" y="206" width="184" height="74"/><circle class="bl" cx="262" cy="206" r="11"/><text class="bln" x="262" y="210" text-anchor="middle">5</text><text class="bxn" x="278" y="232">Offline worker</text><text class="bxs" x="278" y="251">Bot filter, decay,</text><text class="bxs" x="278" y="265">K-Means k=3</text><rect class="bx" x="34" y="206" width="184" height="74"/><circle class="bl" cx="34" cy="206" r="11"/><text class="bln" x="34" y="210" text-anchor="middle">6</text><text class="bxn" x="50" y="232">actuator.js</text><text class="bxs" x="50" y="251">FLIP reorder per cohort</text><line class="ext" x1="34" y1="22" x2="34" y2="64"/><line class="ext" x1="218" y1="22" x2="218" y2="64"/><line class="dim draw" x1="35" y1="30" x2="217" y2="30" marker-start="url(#ar-headless-bai)" marker-end="url(#ar-headless-bai)"/><rect class="dimbg" x="18.39999999999999" y="20" width="215.20000000000002" height="20"/><text class="dimt" x="126.0" y="34" text-anchor="middle">&lt; 1 ms main-thread cost</text></svg></div>
+<ol class="flow"><li class="node"><strong>sensor.js</strong><span>Browser telemetry, micro-batches</span></li><li class="node"><strong>FastAPI</strong><span>Pydantic validation</span></li><li class="node"><strong>Redis</strong><span>Buffers every event</span></li><li class="node"><strong>Supabase</strong><span>Raw events in SQL</span></li><li class="node"><strong>Offline worker</strong><span>Bot filter, decay, K-Means k=3</span></li><li class="node"><strong>actuator.js</strong><span>FLIP reorder per cohort</span></li></ol>
+<div class="detail" aria-hidden="true">
+<div class="detail-ring"><canvas data-viz="kmeans"></canvas></div>
+<span class="detail-id">A</span>
+<span class="detail-cap">Detail A · K-Means cohorts · live</span>
 </div>
+</figure>
 </div>
-<div class="scene-viz" aria-hidden="true"><canvas data-viz="kmeans"></canvas><span class="viz-tag">k-means · 3 cohorts</span><span class="ghost">31.42%</span></div>
-</article><article class="scene p-geosmart-advisor" style="--i:1">
-<div class="scene-text">
-<div>
-<p class="kind">Geospatial ML · Jun–Sep 2025</p>
-<h3><a href="projects/geosmart-advisor.html">GeoSmart Advisor</a></h3>
+</section><section class="sheet" data-sheet="03" id="geosmart-advisor">
+<div class="strip"><span class="no">Sheet 03 / 09</span><span class="t">GeoSmart Advisor</span><span class="k">Geospatial ML · Jun–Sep 2025</span><a href="https://github.com/Aksharma127/GeoSmart_Advisor">Source ↗</a></div>
+<div class="zones" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
+<div class="proj">
+<div class="proj-text">
+<h2 class="proj-title"><a href="projects/geosmart-advisor.html">GeoSmart Advisor</a></h2>
 <p class="short">Scores a map location for how well a given type of business would do there. Live OpenStreetMap and Foursquare data go through a Julia scoring core, and a local Phi-3-mini model writes the site report.</p>
+<table class="spec"><thead><tr><th>Value</th><th>Specification</th></tr></thead><tbody><tr><td class='num'>< 180 ms</td><td>Julia scoring for 100 candidates (NumPy: ~2.1 s)</td></tr><tr><td class='num'>< 420 MB</td><td>peak RAM per pipeline stage</td></tr><tr><td class='num'>60 FPS</td><td>WebGL heatmap at 100k+ points</td></tr></tbody></table>
+<div class="actions"><a class="btn primary" href="projects/geosmart-advisor.html">Open detail drawing <span class="arrow">→</span></a><a class="btn" href="https://github.com/Aksharma127/GeoSmart_Advisor">Source <span class="arrow">↗</span></a></div>
 </div>
-<div class="scene-bottom">
-<dl class="metrics"><div><dt>< 180 ms</dt><dd>Julia scoring for 100 candidates (NumPy: ~2.1 s)</dd></div><div><dt>< 420 MB</dt><dd>peak RAM per pipeline stage</dd></div><div><dt>60 FPS</dt><dd>WebGL heatmap at 100k+ points</dd></div></dl>
-<div class="actions"><a class="btn primary" href="projects/geosmart-advisor.html">Read the case study <span class="arrow">→</span></a><a class="btn" href="https://github.com/Aksharma127/GeoSmart_Advisor">GitHub <span class="arrow">↗</span></a></div>
+<figure class="drawing proj-fig">
+<figcaption class="fig-no">Fig. 3 · Data path</figcaption>
+<div class="dwg-wide"><svg class="dwg" viewBox="0 0 708 310" role="img" aria-label="Block diagram: React + deck.gl to FastAPI to LangGraph agents to Julia core to Phi-3-mini"><defs><marker id="ar-geosmart-advisor" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" class="ah"/></marker></defs><line class="ln draw" x1="218" y1="107.0" x2="260" y2="107.0" marker-end="url(#ar-geosmart-advisor)"/><line class="ln draw" x1="446" y1="107.0" x2="488" y2="107.0" marker-end="url(#ar-geosmart-advisor)"/><line class="ln draw" x1="582.0" y1="144" x2="582.0" y2="204" marker-end="url(#ar-geosmart-advisor)"/><line class="ln draw" x1="490" y1="243.0" x2="448" y2="243.0" marker-end="url(#ar-geosmart-advisor)"/><rect class="bx" x="34" y="70" width="184" height="74"/><circle class="bl" cx="34" cy="70" r="11"/><text class="bln" x="34" y="74" text-anchor="middle">1</text><text class="bxn" x="50" y="96">React + deck.gl</text><text class="bxs" x="50" y="115">Map UI, WebGL heatmap</text><rect class="bx" x="262" y="70" width="184" height="74"/><circle class="bl" cx="262" cy="70" r="11"/><text class="bln" x="262" y="74" text-anchor="middle">2</text><text class="bxn" x="278" y="96">FastAPI</text><text class="bxs" x="278" y="115">/api/v1/analyze</text><rect class="bx" x="490" y="70" width="184" height="74"/><circle class="bl" cx="490" cy="70" r="11"/><text class="bln" x="490" y="74" text-anchor="middle">3</text><text class="bxn" x="506" y="96">LangGraph agents</text><text class="bxs" x="506" y="115">OSM, Foursquare, zoning</text><rect class="bx" x="490" y="206" width="184" height="74"/><circle class="bl" cx="490" cy="206" r="11"/><text class="bln" x="490" y="210" text-anchor="middle">4</text><text class="bxn" x="506" y="232">Julia core</text><text class="bxs" x="506" y="251">GeoStats.jl scoring</text><rect class="bx" x="262" y="206" width="184" height="74"/><circle class="bl" cx="262" cy="206" r="11"/><text class="bln" x="262" y="210" text-anchor="middle">5</text><text class="bxn" x="278" y="232">Phi-3-mini</text><text class="bxs" x="278" y="251">4-bit, writes the</text><text class="bxs" x="278" y="265">report</text><line class="ext" x1="34" y1="22" x2="34" y2="64"/><line class="ext" x1="674" y1="22" x2="674" y2="64"/><line class="dim draw" x1="35" y1="30" x2="673" y2="30" marker-start="url(#ar-geosmart-advisor)" marker-end="url(#ar-geosmart-advisor)"/><rect class="dimbg" x="208.6" y="20" width="290.8" height="20"/><text class="dimt" x="354.0" y="34" text-anchor="middle">&lt; 8 s end to end · 25-point grid</text></svg></div>
+<ol class="flow"><li class="node"><strong>React + deck.gl</strong><span>Map UI, WebGL heatmap</span></li><li class="node"><strong>FastAPI</strong><span>/api/v1/analyze</span></li><li class="node"><strong>LangGraph agents</strong><span>OSM, Foursquare, zoning</span></li><li class="node"><strong>Julia core</strong><span>GeoStats.jl scoring</span></li><li class="node"><strong>Phi-3-mini</strong><span>4-bit, writes the report</span></li></ol>
+<div class="detail" aria-hidden="true">
+<div class="detail-ring"><canvas data-viz="heatmap"></canvas></div>
+<span class="detail-id">A</span>
+<span class="detail-cap">Detail A · Site score heatmap · live</span>
 </div>
+</figure>
 </div>
-<div class="scene-viz" aria-hidden="true"><canvas data-viz="heatmap"></canvas><span class="viz-tag">site score heatmap</span><span class="ghost">180 ms</span></div>
-</article><article class="scene p-docqa" style="--i:2">
-<div class="scene-text">
-<div>
-<p class="kind">Local RAG · Feb–Mar 2026</p>
-<h3><a href="projects/docqa.html">docqa</a></h3>
+</section><section class="sheet" data-sheet="04" id="docqa">
+<div class="strip"><span class="no">Sheet 04 / 09</span><span class="t">docqa</span><span class="k">Local RAG · Feb–Mar 2026</span><a href="https://github.com/Aksharma127/docqa-project">Source ↗</a></div>
+<div class="zones" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
+<div class="proj">
+<div class="proj-text">
+<h2 class="proj-title"><a href="projects/docqa.html">docqa</a></h2>
 <p class="short">Question answering over your own PDFs and notes that never leaves your machine. Embeddings, vector search and the language model all run locally, and every answer points back to the file, page and section it came from.</p>
+<table class="spec"><thead><tr><th>Value</th><th>Specification</th></tr></thead><tbody><tr><td class='num'>0</td><td>paid APIs or network calls at query time</td></tr><tr><td class='num'>SHA-256</td><td>content-hash indexing: unchanged files are skipped</td></tr><tr><td class='num'>~1 GB</td><td>Qwen2.5-1.5B Q4_K_M model via llama.cpp</td></tr></tbody></table>
+<div class="actions"><a class="btn primary" href="projects/docqa.html">Open detail drawing <span class="arrow">→</span></a><a class="btn" href="https://github.com/Aksharma127/docqa-project">Source <span class="arrow">↗</span></a></div>
 </div>
-<div class="scene-bottom">
-<dl class="metrics"><div><dt>0</dt><dd>paid APIs or network calls at query time</dd></div><div><dt>SHA-256</dt><dd>content-hash indexing: unchanged files are skipped</dd></div><div><dt>~1 GB</dt><dd>Qwen2.5-1.5B Q4_K_M model via llama.cpp</dd></div></dl>
-<div class="actions"><a class="btn primary" href="projects/docqa.html">Read the case study <span class="arrow">→</span></a><a class="btn" href="https://github.com/Aksharma127/docqa-project">GitHub <span class="arrow">↗</span></a></div>
+<figure class="drawing proj-fig">
+<figcaption class="fig-no">Fig. 4 · Data path</figcaption>
+<div class="dwg-wide"><svg class="dwg" viewBox="0 0 708 310" role="img" aria-label="Block diagram: Extract to Chunk to Embed to ChromaDB to Retrieve to Qwen2.5-1.5B"><defs><marker id="ar-docqa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" class="ah"/></marker></defs><line class="ln draw" x1="218" y1="107.0" x2="260" y2="107.0" marker-end="url(#ar-docqa)"/><line class="ln draw" x1="446" y1="107.0" x2="488" y2="107.0" marker-end="url(#ar-docqa)"/><line class="ln draw" x1="582.0" y1="144" x2="582.0" y2="204" marker-end="url(#ar-docqa)"/><line class="ln draw" x1="490" y1="243.0" x2="448" y2="243.0" marker-end="url(#ar-docqa)"/><line class="ln draw" x1="262" y1="243.0" x2="220" y2="243.0" marker-end="url(#ar-docqa)"/><rect class="bx" x="34" y="70" width="184" height="74"/><circle class="bl" cx="34" cy="70" r="11"/><text class="bln" x="34" y="74" text-anchor="middle">1</text><text class="bxn" x="50" y="96">Extract</text><text class="bxs" x="50" y="115">PDF, TXT, Markdown</text><rect class="bx" x="262" y="70" width="184" height="74"/><circle class="bl" cx="262" cy="70" r="11"/><text class="bln" x="262" y="74" text-anchor="middle">2</text><text class="bxn" x="278" y="96">Chunk</text><text class="bxs" x="278" y="115">Recursive, with overlap</text><rect class="bx" x="490" y="70" width="184" height="74"/><circle class="bl" cx="490" cy="70" r="11"/><text class="bln" x="490" y="74" text-anchor="middle">3</text><text class="bxn" x="506" y="96">Embed</text><text class="bxs" x="506" y="115">MiniLM-L6, 384-dim</text><rect class="bx" x="490" y="206" width="184" height="74"/><circle class="bl" cx="490" cy="206" r="11"/><text class="bln" x="490" y="210" text-anchor="middle">4</text><text class="bxn" x="506" y="232">ChromaDB</text><text class="bxs" x="506" y="251">Persistent, cosine</text><rect class="bx" x="262" y="206" width="184" height="74"/><circle class="bl" cx="262" cy="206" r="11"/><text class="bln" x="262" y="210" text-anchor="middle">5</text><text class="bxn" x="278" y="232">Retrieve</text><text class="bxs" x="278" y="251">Top-k = 5</text><rect class="bx" x="34" y="206" width="184" height="74"/><circle class="bl" cx="34" cy="206" r="11"/><text class="bln" x="34" y="210" text-anchor="middle">6</text><text class="bxn" x="50" y="232">Qwen2.5-1.5B</text><text class="bxs" x="50" y="251">llama.cpp, cites</text><text class="bxs" x="50" y="265">sources</text><line class="ext" x1="34" y1="22" x2="34" y2="64"/><line class="ext" x1="674" y1="22" x2="674" y2="64"/><line class="dim draw" x1="35" y1="30" x2="673" y2="30" marker-start="url(#ar-docqa)" marker-end="url(#ar-docqa)"/><rect class="dimbg" x="280.0" y="20" width="148.0" height="20"/><text class="dimt" x="354.0" y="34" text-anchor="middle">0 network calls</text></svg></div>
+<ol class="flow"><li class="node"><strong>Extract</strong><span>PDF, TXT, Markdown</span></li><li class="node"><strong>Chunk</strong><span>Recursive, with overlap</span></li><li class="node"><strong>Embed</strong><span>MiniLM-L6, 384-dim</span></li><li class="node"><strong>ChromaDB</strong><span>Persistent, cosine</span></li><li class="node"><strong>Retrieve</strong><span>Top-k = 5</span></li><li class="node"><strong>Qwen2.5-1.5B</strong><span>llama.cpp, cites sources</span></li></ol>
+<div class="detail" aria-hidden="true">
+<div class="detail-ring"><canvas data-viz="topk"></canvas></div>
+<span class="detail-id">A</span>
+<span class="detail-cap">Detail A · Top-5 semantic search · live</span>
 </div>
+</figure>
 </div>
-<div class="scene-viz" aria-hidden="true"><canvas data-viz="topk"></canvas><span class="viz-tag">semantic search · k = 5</span><span class="ghost">offline</span></div>
-</article><article class="scene p-edge-video-analytics" style="--i:3">
-<div class="scene-text">
-<div>
-<p class="kind">C++ inference pipeline</p>
-<h3><a href="projects/edge-video-analytics.html">Edge Video Analytics</a></h3>
+</section><section class="sheet" data-sheet="05" id="edge-video-analytics">
+<div class="strip"><span class="no">Sheet 05 / 09</span><span class="t">Edge Video Analytics</span><span class="k">C++ inference pipeline</span><a href="https://github.com/Aksharma127/Edge-Optimized-Video-Analytics-Pipeline">Source ↗</a></div>
+<div class="zones" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
+<div class="proj">
+<div class="proj-text">
+<h2 class="proj-title"><a href="projects/edge-video-analytics.html">Edge Video Analytics</a></h2>
 <p class="short">Object detection on video files or a webcam, written in C++17 with no Python in the inference path. YOLOv8n runs through OpenCV's DNN module, with custom NMS and per-frame latency readouts.</p>
+<table class="spec"><thead><tr><th>Value</th><th>Specification</th></tr></thead><tbody><tr><td class='num'>336 ms</td><td>average inference per frame on CPU</td></tr><tr><td class='num'>647</td><td>frames in the 768×432 benchmark video</td></tr><tr><td class='num'>12.3 MB</td><td>YOLOv8n ONNX model, 80 COCO classes</td></tr></tbody></table>
+<div class="actions"><a class="btn primary" href="projects/edge-video-analytics.html">Open detail drawing <span class="arrow">→</span></a><a class="btn" href="https://github.com/Aksharma127/Edge-Optimized-Video-Analytics-Pipeline">Source <span class="arrow">↗</span></a></div>
 </div>
-<div class="scene-bottom">
-<dl class="metrics"><div><dt>336 ms</dt><dd>average inference per frame on CPU</dd></div><div><dt>647</dt><dd>frames in the 768×432 benchmark video</dd></div><div><dt>12.3 MB</dt><dd>YOLOv8n ONNX model, 80 COCO classes</dd></div></dl>
-<div class="actions"><a class="btn primary" href="projects/edge-video-analytics.html">Read the case study <span class="arrow">→</span></a><a class="btn" href="https://github.com/Aksharma127/Edge-Optimized-Video-Analytics-Pipeline">GitHub <span class="arrow">↗</span></a></div>
+<figure class="drawing proj-fig">
+<figcaption class="fig-no">Fig. 5 · Data path</figcaption>
+<div class="dwg-wide"><svg class="dwg" viewBox="0 0 708 282" role="img" aria-label="Block diagram: Capture to Letterbox to YOLOv8n to NMS to Output"><defs><marker id="ar-edge-video-analytics" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" class="ah"/></marker></defs><line class="ln draw" x1="218" y1="100.0" x2="260" y2="100.0" marker-end="url(#ar-edge-video-analytics)"/><line class="ln draw" x1="446" y1="100.0" x2="488" y2="100.0" marker-end="url(#ar-edge-video-analytics)"/><line class="ln draw" x1="582.0" y1="130" x2="582.0" y2="190" marker-end="url(#ar-edge-video-analytics)"/><line class="ln draw" x1="490" y1="222.0" x2="448" y2="222.0" marker-end="url(#ar-edge-video-analytics)"/><rect class="bx" x="34" y="70" width="184" height="60"/><circle class="bl" cx="34" cy="70" r="11"/><text class="bln" x="34" y="74" text-anchor="middle">1</text><text class="bxn" x="50" y="96">Capture</text><text class="bxs" x="50" y="115">File or V4L2 webcam</text><rect class="bx" x="262" y="70" width="184" height="60"/><circle class="bl" cx="262" cy="70" r="11"/><text class="bln" x="262" y="74" text-anchor="middle">2</text><text class="bxn" x="278" y="96">Letterbox</text><text class="bxs" x="278" y="115">640 px input</text><rect class="bx" x="490" y="70" width="184" height="60"/><circle class="bl" cx="490" cy="70" r="11"/><text class="bln" x="490" y="74" text-anchor="middle">3</text><text class="bxn" x="506" y="96">YOLOv8n</text><text class="bxs" x="506" y="115">ONNX via OpenCV DNN</text><rect class="bx" x="490" y="192" width="184" height="60"/><circle class="bl" cx="490" cy="192" r="11"/><text class="bln" x="490" y="196" text-anchor="middle">4</text><text class="bxn" x="506" y="218">NMS</text><text class="bxs" x="506" y="237">Custom suppression</text><rect class="bx" x="262" y="192" width="184" height="60"/><circle class="bl" cx="262" cy="192" r="11"/><text class="bln" x="262" y="196" text-anchor="middle">5</text><text class="bxn" x="278" y="218">Output</text><text class="bxs" x="278" y="237">Boxes, telemetry, MP4</text><line class="ext" x1="34" y1="22" x2="34" y2="64"/><line class="ext" x1="674" y1="22" x2="674" y2="64"/><line class="dim draw" x1="35" y1="30" x2="673" y2="30" marker-start="url(#ar-edge-video-analytics)" marker-end="url(#ar-edge-video-analytics)"/><rect class="dimbg" x="250.6" y="20" width="206.8" height="20"/><text class="dimt" x="354.0" y="34" text-anchor="middle">358 ms per frame · CPU</text></svg></div>
+<ol class="flow"><li class="node"><strong>Capture</strong><span>File or V4L2 webcam</span></li><li class="node"><strong>Letterbox</strong><span>640 px input</span></li><li class="node"><strong>YOLOv8n</strong><span>ONNX via OpenCV DNN</span></li><li class="node"><strong>NMS</strong><span>Custom suppression</span></li><li class="node"><strong>Output</strong><span>Boxes, telemetry, MP4</span></li></ol>
+<div class="detail" aria-hidden="true">
+<div class="detail-ring"><canvas data-viz="detect"></canvas></div>
+<span class="detail-id">A</span>
+<span class="detail-cap">Detail A · YOLOv8n detections · live</span>
 </div>
+</figure>
 </div>
-<div class="scene-viz" aria-hidden="true"><canvas data-viz="detect"></canvas><span class="viz-tag">yolov8n detections</span><span class="ghost">C++17</span></div>
-</article><article class="scene p-chernobyl-kinetics" style="--i:4">
-<div class="scene-text">
-<div>
-<p class="kind">Simulation · Julia</p>
-<h3><a href="projects/chernobyl-kinetics.html">ChernobylKinetics</a></h3>
+</section><section class="sheet" data-sheet="06" id="chernobyl-kinetics">
+<div class="strip"><span class="no">Sheet 06 / 09</span><span class="t">ChernobylKinetics</span><span class="k">Simulation · Julia</span><a href="https://github.com/Aksharma127/ChernobylKinetics">Source ↗</a></div>
+<div class="zones" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
+<div class="proj">
+<div class="proj-text">
+<h2 class="proj-title"><a href="projects/chernobyl-kinetics.html">Chernobyl<wbr>Kinetics</a></h2>
 <p class="short">A reconstruction of the 1986 Chernobyl reactor excursion as a point-kinetics model: 11 coupled ODEs solved with DifferentialEquations.jl, with parameters from the IAEA INSAG-7 report, run across five what-if scenarios.</p>
+<table class="spec"><thead><tr><th>Value</th><th>Specification</th></tr></thead><tbody><tr><td class='num'>11</td><td>coupled ODEs in the reactor model</td></tr><tr><td class='num'>6</td><td>delayed-neutron precursor groups</td></tr><tr><td class='num'>5</td><td>scenarios, from baseline to no graphite tips</td></tr></tbody></table>
+<div class="actions"><a class="btn primary" href="projects/chernobyl-kinetics.html">Open detail drawing <span class="arrow">→</span></a><a class="btn" href="https://github.com/Aksharma127/ChernobylKinetics">Source <span class="arrow">↗</span></a></div>
 </div>
-<div class="scene-bottom">
-<dl class="metrics"><div><dt>11</dt><dd>coupled ODEs in the reactor model</dd></div><div><dt>6</dt><dd>delayed-neutron precursor groups</dd></div><div><dt>5</dt><dd>scenarios, from baseline to no graphite tips</dd></div></dl>
-<div class="actions"><a class="btn primary" href="projects/chernobyl-kinetics.html">Read the case study <span class="arrow">→</span></a><a class="btn" href="https://github.com/Aksharma127/ChernobylKinetics">GitHub <span class="arrow">↗</span></a></div>
+<figure class="drawing proj-fig">
+<figcaption class="fig-no">Fig. 6 · Data path</figcaption>
+<div class="dwg-wide"><svg class="dwg" viewBox="0 0 708 296" role="img" aria-label="Block diagram: Reactivity ρ to n(t) + 6 groups to Power to Fuel + coolant T to I-135 / Xe-135"><defs><marker id="ar-chernobyl-kinetics" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" class="ah"/></marker></defs><line class="ln draw" x1="218" y1="100.0" x2="260" y2="100.0" marker-end="url(#ar-chernobyl-kinetics)"/><line class="ln draw" x1="446" y1="100.0" x2="488" y2="100.0" marker-end="url(#ar-chernobyl-kinetics)"/><line class="ln draw" x1="582.0" y1="130" x2="582.0" y2="190" marker-end="url(#ar-chernobyl-kinetics)"/><line class="ln draw" x1="490" y1="222.0" x2="448" y2="222.0" marker-end="url(#ar-chernobyl-kinetics)"/><path class="ln fb draw" d="M354.0,252 V276 H16 V100.0 H32" fill="none" marker-end="url(#ar-chernobyl-kinetics)"/><text class="fbl" x="185.0" y="270" text-anchor="middle">FEEDBACK</text><rect class="bx" x="34" y="70" width="184" height="60"/><circle class="bl" cx="34" cy="70" r="11"/><text class="bln" x="34" y="74" text-anchor="middle">1</text><text class="bxn" x="50" y="96">Reactivity ρ</text><text class="bxs" x="50" y="115">Rods, void, Doppler</text><rect class="bx" x="262" y="70" width="184" height="60"/><circle class="bl" cx="262" cy="70" r="11"/><text class="bln" x="262" y="74" text-anchor="middle">2</text><text class="bxn" x="278" y="96">n(t) + 6 groups</text><text class="bxs" x="278" y="115">Point kinetics</text><rect class="bx" x="490" y="70" width="184" height="60"/><circle class="bl" cx="490" cy="70" r="11"/><text class="bln" x="490" y="74" text-anchor="middle">3</text><text class="bxn" x="506" y="96">Power</text><text class="bxs" x="506" y="115">Heat into the core</text><rect class="bx" x="490" y="192" width="184" height="60"/><circle class="bl" cx="490" cy="192" r="11"/><text class="bln" x="490" y="196" text-anchor="middle">4</text><text class="bxn" x="506" y="218">Fuel + coolant T</text><text class="bxs" x="506" y="237">Average temperatures</text><rect class="bx" x="262" y="192" width="184" height="60"/><circle class="bl" cx="262" cy="192" r="11"/><text class="bln" x="262" y="196" text-anchor="middle">5</text><text class="bxn" x="278" y="218">I-135 / Xe-135</text><text class="bxs" x="278" y="237">Xenon poisoning</text><line class="ext" x1="34" y1="22" x2="34" y2="64"/><line class="ext" x1="674" y1="22" x2="674" y2="64"/><line class="dim draw" x1="35" y1="30" x2="673" y2="30" marker-start="url(#ar-chernobyl-kinetics)" marker-end="url(#ar-chernobyl-kinetics)"/><rect class="dimbg" x="280.0" y="20" width="148.0" height="20"/><text class="dimt" x="354.0" y="34" text-anchor="middle">11 coupled ODEs</text></svg></div>
+<ol class="flow"><li class="node"><strong>Reactivity ρ</strong><span>Rods, void, Doppler</span></li><li class="node"><strong>n(t) + 6 groups</strong><span>Point kinetics</span></li><li class="node"><strong>Power</strong><span>Heat into the core</span></li><li class="node"><strong>Fuel + coolant T</strong><span>Average temperatures</span></li><li class="node"><strong>I-135 / Xe-135</strong><span>Xenon poisoning</span></li></ol>
+<div class="detail" aria-hidden="true">
+<div class="detail-ring"><canvas data-viz="chain"></canvas></div>
+<span class="detail-id">A</span>
+<span class="detail-cap">Detail A · Neutron chain reaction · live</span>
 </div>
+</figure>
 </div>
-<div class="scene-viz" aria-hidden="true"><canvas data-viz="chain"></canvas><span class="viz-tag">neutron chain reaction</span><span class="ghost">11 ODEs</span></div>
-</article></div>
-<section style="padding-top:clamp(40px,6vw,80px)"><div class="frame">
-<div class="intro-row"><div><span class="label">Smaller and older projects</span><h2>Other work</h2></div><div><p>Earlier systems work in C++ and Java, plus smaller ML experiments.</p><a class="more" href="https://github.com/Aksharma127?tab=repositories">All repositories ↗</a></div></div>
-<div class="mini-list"><article class="mini"><h3><a href="https://github.com/Aksharma127/cortex">Cortex</a></h3><p>Document ingestion backend for a research assistant. Loads PDF, DOCX, TXT and Markdown, chunks and embeds in batches, keeps metadata in PostgreSQL and vectors in ChromaDB, served through FastAPI. Phase 1 is done; agent orchestration is the next phase.</p><ul class="tags"><li>FastAPI</li><li>PostgreSQL</li><li>ChromaDB</li><li>Docker Compose</li></ul></article><article class="mini"><h3><a href="https://github.com/Aksharma127/Community-Management-System">Community Management System</a></h3><p>Solo Java rebuild of a community management app with a layered DAO design, SQLite storage, PreparedStatements throughout and salted SHA-256 password hashing.</p><ul class="tags"><li>Java</li><li>SQLite</li><li>JDBC</li></ul></article><article class="mini"><h3><a href="https://github.com/Aksharma127/Compiler-in-cpp">Compiler in C++</a></h3><p>A small compiler written from scratch in C++ to learn lexing, parsing and code generation.</p><ul class="tags"><li>C++</li></ul></article><article class="mini"><h3><a href="https://github.com/Aksharma127/RayTracing-master">Ray Tracer</a></h3><p>CPU ray tracer in C++: rays, materials, shading and image output.</p><ul class="tags"><li>C++</li></ul></article><article class="mini"><h3><a href="https://github.com/Aksharma127/Minecraft">Voxel Engine</a></h3><p>A Minecraft-style voxel world renderer in C++.</p><ul class="tags"><li>C++</li><li>OpenGL</li></ul></article><article class="mini"><h3><a href="https://github.com/Aksharma127/dream11-predicting-model">Dream11 Prediction Model</a></h3><p>Model for predicting IPL fantasy-cricket team picks from player match data.</p><ul class="tags"><li>Python</li><li>scikit-learn</li></ul></article><article class="mini"><h3><a href="https://github.com/Aksharma127/Geo-Processing-practice">Geo-Processing Practice</a></h3><p>Notebooks from the ISRO Geo Processing with Python course: raster and vector processing.</p><ul class="tags"><li>Python</li><li>Jupyter</li><li>GIS</li></ul></article></div>
-</div></section>
+</section>
+<section class="sheet" data-sheet="A">
+<div class="strip"><span class="no">Archive</span><span class="t">Earlier drawings</span><span class="k">Smaller and older projects</span><a href="https://github.com/Aksharma127?tab=repositories">All repositories ↗</a></div>
+<div class="zones" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
+<div class="sheet-pad"><h2 class="sheet-title">Earlier drawings</h2>
+<div class="table-wrap"><table class="archive"><thead><tr><th>Project</th><th>Description</th><th>Stack</th></tr></thead><tbody><tr><td><a href="https://github.com/Aksharma127/cortex"><strong>Cortex</strong></a></td><td class="desc">Document ingestion backend for a research assistant. Loads PDF, DOCX, TXT and Markdown, chunks and embeds in batches, keeps metadata in PostgreSQL and vectors in ChromaDB, served through FastAPI. Phase 1 is done; agent orchestration is the next phase.</td><td>FastAPI, PostgreSQL, ChromaDB, Docker Compose</td></tr><tr><td><a href="https://github.com/Aksharma127/Community-Management-System"><strong>Community Management System</strong></a></td><td class="desc">Solo Java rebuild of a community management app with a layered DAO design, SQLite storage, PreparedStatements throughout and salted SHA-256 password hashing.</td><td>Java, SQLite, JDBC</td></tr><tr><td><a href="https://github.com/Aksharma127/Compiler-in-cpp"><strong>Compiler in C++</strong></a></td><td class="desc">A small compiler written from scratch in C++ to learn lexing, parsing and code generation.</td><td>C++</td></tr><tr><td><a href="https://github.com/Aksharma127/RayTracing-master"><strong>Ray Tracer</strong></a></td><td class="desc">CPU ray tracer in C++: rays, materials, shading and image output.</td><td>C++</td></tr><tr><td><a href="https://github.com/Aksharma127/Minecraft"><strong>Voxel Engine</strong></a></td><td class="desc">A Minecraft-style voxel world renderer in C++.</td><td>C++, OpenGL</td></tr><tr><td><a href="https://github.com/Aksharma127/dream11-predicting-model"><strong>Dream11 Prediction Model</strong></a></td><td class="desc">Model for predicting IPL fantasy-cricket team picks from player match data.</td><td>Python, scikit-learn</td></tr><tr><td><a href="https://github.com/Aksharma127/Geo-Processing-practice"><strong>Geo-Processing Practice</strong></a></td><td class="desc">Notebooks from the ISRO Geo Processing with Python course: raster and vector processing.</td><td>Python, Jupyter, GIS</td></tr></tbody></table></div></div>
+</section>
 </main>
-<footer class="site-footer"><div class="frame">
-<span>Akshit Sharma · Updated October 2026</span>
+<footer class="site-footer"><div class="bar">
+<span>DWG AS-2026 · Akshit Sharma · Rev D, 19 Oct 2026</span>
 <span><a href="https://github.com/Aksharma127">GitHub</a> · <a href="https://www.linkedin.com/in/akshit-sharma-52660a251/">LinkedIn</a> · <a href="mailto:asharma53858@gmail.com">asharma53858@gmail.com</a></span>
 </div></footer>
+<p class="coords" id="coords" aria-hidden="true">X <b>0000</b> · Y <b>0000</b> mm · <span>SHEET 01</span></p>
 <script src="app.js"></script>
 </body>
 </html>

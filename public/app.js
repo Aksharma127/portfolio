@@ -28,13 +28,13 @@
     function regen() {
       round++;
       var centers = [];
-      var xs = opts.hero ? [0.5, 0.95] : opts.dark ? [0.58, 0.95] : [0.2, 0.8];
-      var ys = opts.hero ? [0.1, 0.56] : [0.18, 0.82];
+      var xs = opts.hero ? [0.12, 0.88] : opts.dark ? [0.58, 0.95] : [0.2, 0.8];
+      var ys = opts.hero ? [0.18, 0.82] : [0.18, 0.82];
       var tries = 0;
       do { centers = []; for (var k = 0; k < 3; k++) centers.push([xs[0] + r() * (xs[1] - xs[0]), ys[0] + r() * (ys[1] - ys[0])]); tries++; }
-      while (tries < 50 && minGap(centers) < (opts.hero ? 0.16 : 0.3));
+      while (tries < 50 && minGap(centers) < (opts.hero ? 0.3 : 0.3));
       pts = [];
-      for (var i = 0; i < N; i++) { var c = centers[i % 3], sp = opts.hero ? 0.04 : opts.dark ? 0.035 : 0.075, spy = opts.hero ? 0.065 : 0.08; pts.push({ x: c[0] + gauss(r) * sp, y: c[1] + gauss(r) * spy, a: -1, px: 0, py: 0 }); }
+      for (var i = 0; i < N; i++) { var c = centers[i % 3], sp = opts.hero ? 0.055 : opts.dark ? 0.035 : 0.075, spy = opts.hero ? 0.075 : 0.08; pts.push({ x: c[0] + gauss(r) * sp, y: c[1] + gauss(r) * spy, a: -1, px: 0, py: 0 }); }
       cents = [pts[Math.floor(r() * N)]].map(function (p) { return { x: p.x, y: p.y }; });
       while (cents.length < 3) {
         var far = null, fd = -1;
@@ -54,7 +54,7 @@
       for (var k = 0; k < 3; k++) if (sums[k][2]) target[k] = { x: sums[k][0] / sums[k][2], y: sums[k][1] / sums[k][2] };
       pts.forEach(function (p) { var dx = p.x - target[p.a].x, dy = p.y - target[p.a].y; wcss += dx * dx + dy * dy; });
       iter++;
-      if (readout) readout.innerHTML = "live k-means on random data · k = <b>3</b> · iteration <b>" + iter + "</b> · WCSS <b>" + wcss.toFixed(3) + "</b>" + (changed ? "" : " · <b>converged</b>");
+      if (readout) readout.innerHTML = "k = <b>3</b> · iter <b>" + iter + "</b> · WCSS <b>" + wcss.toFixed(3) + "</b>" + (changed ? "" : " · <b>converged</b>");
       return changed;
     }
     regen();
@@ -223,7 +223,7 @@
       var cs = getComputedStyle(el), avail = el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
       el.style.fontSize = "100px";
       var wdt = inner.getBoundingClientRect().width;
-      if (wdt > 0) el.style.fontSize = Math.floor(100 * avail / wdt * 0.995 * 10) / 10 + "px";
+      if (wdt > 0) el.style.fontSize = Math.floor(Math.min(100 * avail / wdt * 0.995, window.innerHeight * 0.4) * 10) / 10 + "px";
     });
   }
 
@@ -255,6 +255,20 @@
     var ft; window.addEventListener("resize", function () { clearTimeout(ft); ft = setTimeout(fitTitles, 100); });
     boot();
     scenes();
+    coords();
+  }
+
+  /* ---------- drafting readout: cursor position in mm and the sheet in view */
+  function coords() {
+    var el = document.getElementById("coords"); if (!el) return;
+    var bs = el.querySelectorAll("b"), sp = el.querySelector("span"), mm = 25.4 / 96;
+    function pad(n) { n = String(Math.max(0, Math.round(n))); return "0000".slice(n.length) + n; }
+    window.addEventListener("pointermove", function (e) { bs[0].textContent = pad(e.clientX * mm); bs[1].textContent = pad((e.clientY + window.scrollY) * mm); }, { passive: true });
+    if (!("IntersectionObserver" in window)) return;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { var s = e.target.getAttribute("data-sheet"); sp.textContent = /^[0-9]+$/.test(s) ? (s === "00" ? "INDEX" : "SHEET " + s) : (s === "A" ? "ARCHIVE" : "SHEET " + s); } });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    document.querySelectorAll(".sheet[data-sheet]").forEach(function (s) { io.observe(s); });
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();

@@ -5,47 +5,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ChernobylKinetics · Akshit Sharma</title>
 <meta name="description" content="A point-kinetics reconstruction of the 1986 Chernobyl excursion, run across five what-if scenarios.">
-<meta name="theme-color" content="#eef1f4">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<meta name="theme-color" content="#eef0eb">
+<link rel="preload" href="../fonts/big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-<header class="site-header"><div class="frame">
-<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>Akshit Sharma</a>
-<nav class="nav" aria-label="Main"><a href="../index.html" class="hide-sm">Home</a><a href="../projects.html" aria-current="page">Projects</a><a href="../experience.html" class="hide-xs">Experience</a><a class="hide-sm" href="../index.html#contact">Contact</a><a class="nav-cta" href="/Akshit_Sharma_Resume.pdf">Resume</a></nav>
+<header class="site-header"><div class="bar">
+<a class="brand" href="../index.html"><span class="brand-no">AS-2026</span><span class="brand-name">Akshit Sharma</span></a>
+<nav class="nav" aria-label="Main"><a href="../index.html" class="hide-sm">Drawing set</a><a href="../projects.html" aria-current="page">Projects</a><a href="../experience.html" class="hide-xs">Experience</a><a class="hide-sm" href="../index.html#contact">Contact</a><a class="nav-cta" href="/Akshit_Sharma_Resume.pdf">Resume ↗</a></nav>
 </div></header>
 <main>
-<div class="p-chernobyl-kinetics">
-<section class="case-hero" style="padding:0">
-<div class="text">
+<section class="sheet case-sheet" data-sheet="06">
+<div class="strip"><span class="no">Sheet 06 · Detail drawing</span><span class="t">ChernobylKinetics</span><span class="k">Simulation · Julia</span><a href="../projects.html">Drawing index</a></div>
+<div class="zones" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
+<div class="case-top">
+<div class="case-text">
 <p class="crumbs"><a href="../projects.html">Projects</a> / ChernobylKinetics</p>
-<div>
-<p class="kind">Simulation · Julia</p>
-<h1>ChernobylKinetics</h1>
+<h1 class="case-title">Chernobyl<wbr>Kinetics</h1>
 <p class="lede">A point-kinetics reconstruction of the 1986 Chernobyl excursion, run across five what-if scenarios.</p>
-</div>
 <div class="actions"><a class="btn primary" href="https://github.com/Aksharma127/ChernobylKinetics">Source on GitHub <span class="arrow">↗</span></a><a class="btn" href="../projects.html">All projects</a></div>
 </div>
-<div class="case-viz" aria-hidden="true"><canvas data-viz="chain"></canvas><span class="viz-tag">neutron chain reaction</span><span class="ghost">11 ODEs</span></div>
-</section>
-<div class="facts-band"><div class="frame"><dl class="facts"><div><dt>11</dt><dd>coupled ODEs</dd></div><div><dt>6</dt><dd>delayed-neutron groups</dd></div><div><dt>5</dt><dd>scenarios</dd></div><div><dt>INSAG-7</dt><dd>parameter source</dd></div></dl></div></div>
-<div class="frame"><div class="case-body"><div class="block"><h2>What it models</h2><div><div class="prose"><p>The reactor core is treated as a single point. That drops spatial detail but keeps the time-dependent physics that drove the accident. The state is 11 coupled ordinary differential equations:</p><ul><li>neutron population n(t)</li><li>six groups of delayed-neutron precursors</li><li>iodine-135 and xenon-135 concentrations (xenon poisoning)</li><li>average fuel and coolant temperatures, which feed back into reactivity</li></ul><p>Parameters come from the IAEA INSAG-7 report. The system is solved with DifferentialEquations.jl in a Jupyter notebook.</p></div></div></div><div class="block"><h2>Scenarios</h2><div><div class="table-wrap"><table>
+<figure class="drawing case-fig">
+<div class="detail big" aria-hidden="true">
+<div class="detail-ring"><canvas data-viz="chain"></canvas></div>
+<span class="detail-id">A</span>
+<span class="detail-cap">Detail A · Neutron chain reaction · live</span>
+</div>
+<table class="spec"><thead><tr><th>Value</th><th>Specification</th></tr></thead><tbody><tr><td class='num'>11</td><td>coupled ODEs</td></tr><tr><td class='num'>6</td><td>delayed-neutron groups</td></tr><tr><td class='num'>5</td><td>scenarios</td></tr><tr><td class='num'>INSAG-7</td><td>parameter source</td></tr></tbody></table>
+</figure>
+</div>
+<div class="case-body"><div class="block"><h2>What it models</h2><div><div class="prose"><p>The reactor core is treated as a single point. That drops spatial detail but keeps the time-dependent physics that drove the accident. The state is 11 coupled ordinary differential equations:</p><ul><li>neutron population n(t)</li><li>six groups of delayed-neutron precursors</li><li>iodine-135 and xenon-135 concentrations (xenon poisoning)</li><li>average fuel and coolant temperatures, which feed back into reactivity</li></ul><p>Parameters come from the IAEA INSAG-7 report. The system is solved with DifferentialEquations.jl in a Jupyter notebook.</p></div></div></div><div class="block"><h2>Scenarios</h2><div><div class="table-wrap"><table>
 <thead><tr><th>Scenario</th><th>Change</th><th>Peak power (× initial)</th></tr></thead><tbody>
 <tr><td>A</td><td>Baseline reconstruction</td><td class="num">672,541</td></tr>
 <tr><td>B</td><td>Slower SCRAM rod insertion (5 s → 20 s)</td><td class="num">4,625</td></tr>
 <tr><td>C</td><td>Higher void coefficient</td><td class="num">≈ 2.5 × 10¹⁰</td></tr>
 <tr><td>D</td><td>Graphite tip effect doubled</td><td class="num">≈ 4.2 × 10⁷</td></tr>
 <tr><td>E</td><td>No graphite tips on control rods</td><td class="num">&lt; 1, power decays</td></tr>
-</tbody></table></div></div></div><div class="block"><h2>What the runs show</h2><div><div class="decisions"><div class="decision"><h3>The void coefficient drives the runaway</h3><p>Raising it (scenario C) increases the peak by about 37,000× over baseline. Positive void feedback is what turns a power rise into an excursion.</p></div><div class="decision"><h3>The graphite tips trigger it</h3><p>With no graphite tips (scenario E) the SCRAM works and power falls immediately. Doubling the tip effect raises the peak about 62×.</p></div><div class="decision"><h3>A slower SCRAM lowers the peak here</h3><p>In scenario B, Doppler feedback in the fuel has time to act before the tips add reactivity.</p></div><div class="decision"><h3>Where the model stops being valid</h3><p>A lumped model has no way to represent the core breaking apart. Past that point its temperatures become physically impossible, so they mark core destruction rather than real values.</p></div></div></div></div>
+</tbody></table></div></div></div><div class="block"><h2>What the runs show</h2><div><ol class="notes"><li><h3>The void coefficient drives the runaway</h3><p>Raising it (scenario C) increases the peak by about 37,000× over baseline. Positive void feedback is what turns a power rise into an excursion.</p></li><li><h3>The graphite tips trigger it</h3><p>With no graphite tips (scenario E) the SCRAM works and power falls immediately. Doubling the tip effect raises the peak about 62×.</p></li><li><h3>A slower SCRAM lowers the peak here</h3><p>In scenario B, Doppler feedback in the fuel has time to act before the tips add reactivity.</p></li><li><h3>Where the model stops being valid</h3><p>A lumped model has no way to represent the core breaking apart. Past that point its temperatures become physically impossible, so they mark core destruction rather than real values.</p></li></ol></div></div>
 <div class="block"><h2>Stack</h2><div><ul class="tags"><li>Julia</li><li>DifferentialEquations.jl</li><li>Jupyter</li></ul></div></div>
-</div></div>
 </div>
-<a class="next-scene p-headless-bai" href="headless-bai.html"><div class="frame"><span class="label">Next project</span><span class="big"><span>Headless_BAI</span><span class="arr" aria-hidden="true">→</span></span></div></a>
+</section>
+<a class="continued" href="headless-bai.html"><span class="label">Continued on sheet 02</span><span class="big">Headless_<wbr>BAI <span class="arr" aria-hidden="true">→</span></span></a>
 </main>
-<footer class="site-footer"><div class="frame">
-<span>Akshit Sharma · Updated October 2026</span>
+<footer class="site-footer"><div class="bar">
+<span>DWG AS-2026 · Akshit Sharma · Rev D, 19 Oct 2026</span>
 <span><a href="https://github.com/Aksharma127">GitHub</a> · <a href="https://www.linkedin.com/in/akshit-sharma-52660a251/">LinkedIn</a> · <a href="mailto:asharma53858@gmail.com">asharma53858@gmail.com</a></span>
 </div></footer>
+<p class="coords" id="coords" aria-hidden="true">X <b>0000</b> · Y <b>0000</b> mm · <span>SHEET 01</span></p>
 <script src="../app.js"></script>
 </body>
 </html>

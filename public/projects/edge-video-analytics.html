@@ -5,31 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Edge Video Analytics · Akshit Sharma</title>
 <meta name="description" content="YOLOv8 object detection on video in C++17 with OpenCV's DNN module and no Python at runtime.">
-<meta name="theme-color" content="#eef1f4">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<meta name="theme-color" content="#eef0eb">
+<link rel="preload" href="../fonts/big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-<header class="site-header"><div class="frame">
-<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>Akshit Sharma</a>
-<nav class="nav" aria-label="Main"><a href="../index.html" class="hide-sm">Home</a><a href="../projects.html" aria-current="page">Projects</a><a href="../experience.html" class="hide-xs">Experience</a><a class="hide-sm" href="../index.html#contact">Contact</a><a class="nav-cta" href="/Akshit_Sharma_Resume.pdf">Resume</a></nav>
+<header class="site-header"><div class="bar">
+<a class="brand" href="../index.html"><span class="brand-no">AS-2026</span><span class="brand-name">Akshit Sharma</span></a>
+<nav class="nav" aria-label="Main"><a href="../index.html" class="hide-sm">Drawing set</a><a href="../projects.html" aria-current="page">Projects</a><a href="../experience.html" class="hide-xs">Experience</a><a class="hide-sm" href="../index.html#contact">Contact</a><a class="nav-cta" href="/Akshit_Sharma_Resume.pdf">Resume ↗</a></nav>
 </div></header>
 <main>
-<div class="p-edge-video-analytics">
-<section class="case-hero" style="padding:0">
-<div class="text">
+<section class="sheet case-sheet" data-sheet="05">
+<div class="strip"><span class="no">Sheet 05 · Detail drawing</span><span class="t">Edge Video Analytics</span><span class="k">C++ inference pipeline</span><a href="../projects.html">Drawing index</a></div>
+<div class="zones" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
+<div class="case-top">
+<div class="case-text">
 <p class="crumbs"><a href="../projects.html">Projects</a> / Edge Video Analytics</p>
-<div>
-<p class="kind">C++ inference pipeline</p>
-<h1>Edge Video Analytics</h1>
+<h1 class="case-title">Edge Video Analytics</h1>
 <p class="lede">YOLOv8 object detection on video in C++17 with OpenCV's DNN module and no Python at runtime.</p>
-</div>
 <div class="actions"><a class="btn primary" href="https://github.com/Aksharma127/Edge-Optimized-Video-Analytics-Pipeline">Source on GitHub <span class="arrow">↗</span></a><a class="btn" href="../projects.html">All projects</a></div>
 </div>
-<div class="case-viz" aria-hidden="true"><canvas data-viz="detect"></canvas><span class="viz-tag">yolov8n detections</span><span class="ghost">C++17</span></div>
-</section>
-<div class="facts-band"><div class="frame"><dl class="facts"><div><dt>336 ms</dt><dd>avg inference, CPU</dd></div><div><dt>252 ms</dt><dd>fastest inference</dd></div><div><dt>12.3 MB</dt><dd>YOLOv8n ONNX model</dd></div><div><dt>80</dt><dd>COCO classes</dd></div></dl></div></div>
-<div class="frame"><div class="case-body"><div class="block"><h2>What it does</h2><div><div class="prose"><p>A command-line C++ program that runs YOLOv8 object detection on a video file or a live webcam (V4L2). It draws bounding boxes and labels, shows per-frame latency, and can write an annotated MP4 or run headless. There is no Python or deep learning framework at runtime, only OpenCV.</p></div></div></div><div class="block"><h2>How a frame moves through it</h2><div><ol class="flow"><li class="node"><strong>Capture</strong><span>Video file or V4L2 webcam</span></li><li class="wire" aria-hidden="true"></li><li class="node"><strong>Letterbox</strong><span>Resize to 640 px input, aspect ratio kept</span></li><li class="wire" aria-hidden="true"></li><li class="node"><strong>Infer</strong><span>YOLOv8n ONNX through OpenCV DNN</span></li><li class="wire" aria-hidden="true"></li><li class="node"><strong>NMS</strong><span>Custom non-maximum suppression</span></li><li class="wire" aria-hidden="true"></li><li class="node"><strong>Output</strong><span>Boxes and telemetry overlay; MP4 file or headless</span></li></ol></div></div><div class="block"><h2>Benchmark (CPU, from the repo README)</h2><div><div class="table-wrap"><table>
+<figure class="drawing case-fig">
+<div class="detail big" aria-hidden="true">
+<div class="detail-ring"><canvas data-viz="detect"></canvas></div>
+<span class="detail-id">A</span>
+<span class="detail-cap">Detail A · YOLOv8n detections · live</span>
+</div>
+<table class="spec"><thead><tr><th>Value</th><th>Specification</th></tr></thead><tbody><tr><td class='num'>336 ms</td><td>avg inference, CPU</td></tr><tr><td class='num'>252 ms</td><td>fastest inference</td></tr><tr><td class='num'>12.3 MB</td><td>YOLOv8n ONNX model</td></tr><tr><td class='num'>80</td><td>COCO classes</td></tr></tbody></table>
+</figure>
+</div>
+<div class="case-body"><div class="block"><h2>What it does</h2><div><div class="prose"><p>A command-line C++ program that runs YOLOv8 object detection on a video file or a live webcam (V4L2). It draws bounding boxes and labels, shows per-frame latency, and can write an annotated MP4 or run headless. There is no Python or deep learning framework at runtime, only OpenCV.</p></div></div></div><div class="block"><h2>How a frame moves through it</h2><div><figure class="drawing case-dwg"><div class="dwg-wide"><svg class="dwg" viewBox="0 0 708 298" role="img" aria-label="Block diagram: Capture to Letterbox to Infer to NMS to Output"><defs><marker id="ar-c4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" class="ah"/></marker></defs><line class="ln draw" x1="218" y1="74.0" x2="260" y2="74.0" marker-end="url(#ar-c4)"/><line class="ln draw" x1="446" y1="74.0" x2="488" y2="74.0" marker-end="url(#ar-c4)"/><line class="ln draw" x1="582.0" y1="118" x2="582.0" y2="178" marker-end="url(#ar-c4)"/><line class="ln draw" x1="490" y1="224.0" x2="448" y2="224.0" marker-end="url(#ar-c4)"/><rect class="bx" x="34" y="30" width="184" height="88"/><circle class="bl" cx="34" cy="30" r="11"/><text class="bln" x="34" y="34" text-anchor="middle">1</text><text class="bxn" x="50" y="56">Capture</text><text class="bxs" x="50" y="75">Video file or V4L2</text><text class="bxs" x="50" y="89">webcam</text><rect class="bx" x="262" y="30" width="184" height="88"/><circle class="bl" cx="262" cy="30" r="11"/><text class="bln" x="262" y="34" text-anchor="middle">2</text><text class="bxn" x="278" y="56">Letterbox</text><text class="bxs" x="278" y="75">Resize to 640 px input,</text><text class="bxs" x="278" y="89">aspect ratio kept</text><rect class="bx" x="490" y="30" width="184" height="88"/><circle class="bl" cx="490" cy="30" r="11"/><text class="bln" x="490" y="34" text-anchor="middle">3</text><text class="bxn" x="506" y="56">Infer</text><text class="bxs" x="506" y="75">YOLOv8n ONNX through</text><text class="bxs" x="506" y="89">OpenCV DNN</text><rect class="bx" x="490" y="180" width="184" height="88"/><circle class="bl" cx="490" cy="180" r="11"/><text class="bln" x="490" y="184" text-anchor="middle">4</text><text class="bxn" x="506" y="206">NMS</text><text class="bxs" x="506" y="225">Custom non-maximum</text><text class="bxs" x="506" y="239">suppression</text><rect class="bx" x="262" y="180" width="184" height="88"/><circle class="bl" cx="262" cy="180" r="11"/><text class="bln" x="262" y="184" text-anchor="middle">5</text><text class="bxn" x="278" y="206">Output</text><text class="bxs" x="278" y="225">Boxes and telemetry</text><text class="bxs" x="278" y="239">overlay; MP4 file or</text><text class="bxs" x="278" y="253">headless</text></svg></div><ol class="flow"><li class="node"><strong>Capture</strong><span>Video file or V4L2 webcam</span></li><li class="node"><strong>Letterbox</strong><span>Resize to 640 px input, aspect ratio kept</span></li><li class="node"><strong>Infer</strong><span>YOLOv8n ONNX through OpenCV DNN</span></li><li class="node"><strong>NMS</strong><span>Custom non-maximum suppression</span></li><li class="node"><strong>Output</strong><span>Boxes and telemetry overlay; MP4 file or headless</span></li></ol></figure></div></div><div class="block"><h2>Benchmark (CPU, from the repo README)</h2><div><div class="table-wrap"><table>
 <thead><tr><th>Measure</th><th>Value</th></tr></thead><tbody>
 <tr><td>Test video</td><td class="num">768×432, 647 frames</td></tr>
 <tr><td>Average inference latency</td><td class="num">336 ms</td></tr>
@@ -38,14 +43,15 @@
 </tbody></table></div>
 <p class="note">That is about 3 frames per second on CPU. The build supports CUDA and FP16 through OpenCV; a GPU benchmark is the next step.</p></div></div>
 <div class="block"><h2>Stack</h2><div><ul class="tags"><li>C++17</li><li>OpenCV 4.11</li><li>ONNX</li><li>YOLOv8</li><li>V4L2</li><li>CMake</li></ul></div></div>
-</div></div>
 </div>
-<a class="next-scene p-chernobyl-kinetics" href="chernobyl-kinetics.html"><div class="frame"><span class="label">Next project</span><span class="big"><span>ChernobylKinetics</span><span class="arr" aria-hidden="true">→</span></span></div></a>
+</section>
+<a class="continued" href="chernobyl-kinetics.html"><span class="label">Continued on sheet 06</span><span class="big">Chernobyl<wbr>Kinetics <span class="arr" aria-hidden="true">→</span></span></a>
 </main>
-<footer class="site-footer"><div class="frame">
-<span>Akshit Sharma · Updated October 2026</span>
+<footer class="site-footer"><div class="bar">
+<span>DWG AS-2026 · Akshit Sharma · Rev D, 19 Oct 2026</span>
 <span><a href="https://github.com/Aksharma127">GitHub</a> · <a href="https://www.linkedin.com/in/akshit-sharma-52660a251/">LinkedIn</a> · <a href="mailto:asharma53858@gmail.com">asharma53858@gmail.com</a></span>
 </div></footer>
+<p class="coords" id="coords" aria-hidden="true">X <b>0000</b> · Y <b>0000</b> mm · <span>SHEET 01</span></p>
 <script src="../app.js"></script>
 </body>
 </html>
