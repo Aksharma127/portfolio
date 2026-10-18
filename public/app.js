@@ -14,8 +14,7 @@
   function gauss(r) { var u = 0; while (!u) u = r(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * r()); }
   function fit(canvas) {
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var rect = canvas.getBoundingClientRect();
-    var w = Math.max(1, rect.width), h = Math.max(1, rect.height);
+    var w = Math.max(1, canvas.clientWidth), h = Math.max(1, canvas.clientHeight);
     canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
     var ctx = canvas.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     return { ctx: ctx, w: w, h: h };
@@ -25,16 +24,17 @@
 
   /* ---------- K-means: real Lloyd iterations on random blobs (hero + Headless_BAI) */
   function kmeans(canvas, opts) {
-    var colors = [C.c1, C.c2, C.c3], N = opts.hero ? 210 : 110, r = rng(7), pts, cents, target, iter, last, hold, readout = opts.readout ? document.getElementById(opts.readout) : null, round = 0;
+    var colors = opts.dark ? ["#ff6b57", "#ffc145", "#35d6c1"] : [C.c1, C.c2, C.c3], N = opts.hero ? 230 : opts.dark ? 170 : 110, r = rng(7), pts, cents, target, iter, last, hold, readout = opts.readout ? document.getElementById(opts.readout) : null, round = 0;
     function regen() {
       round++;
       var centers = [];
-      var xs = opts.hero ? [0.6, 0.93] : [0.2, 0.8];
+      var xs = opts.hero ? [0.5, 0.95] : opts.dark ? [0.58, 0.95] : [0.2, 0.8];
+      var ys = opts.hero ? [0.1, 0.56] : [0.18, 0.82];
       var tries = 0;
-      do { centers = []; for (var k = 0; k < 3; k++) centers.push([xs[0] + r() * (xs[1] - xs[0]), 0.18 + r() * 0.64]); tries++; }
+      do { centers = []; for (var k = 0; k < 3; k++) centers.push([xs[0] + r() * (xs[1] - xs[0]), ys[0] + r() * (ys[1] - ys[0])]); tries++; }
       while (tries < 50 && minGap(centers) < (opts.hero ? 0.16 : 0.3));
       pts = [];
-      for (var i = 0; i < N; i++) { var c = centers[i % 3], sp = opts.hero ? 0.045 : 0.075; pts.push({ x: c[0] + gauss(r) * sp, y: c[1] + gauss(r) * 0.08, a: -1, px: 0, py: 0 }); }
+      for (var i = 0; i < N; i++) { var c = centers[i % 3], sp = opts.hero ? 0.04 : opts.dark ? 0.035 : 0.075, spy = opts.hero ? 0.065 : 0.08; pts.push({ x: c[0] + gauss(r) * sp, y: c[1] + gauss(r) * spy, a: -1, px: 0, py: 0 }); }
       cents = [pts[Math.floor(r() * N)]].map(function (p) { return { x: p.x, y: p.y }; });
       while (cents.length < 3) {
         var far = null, fd = -1;
@@ -71,8 +71,8 @@
       ctx.clearRect(0, 0, w, h);
       var X = function (x) { return pad + x * (w - 2 * pad); }, Y = function (y) { return pad + y * (h - 2 * pad); };
       pts.forEach(function (p) {
-        var col = p.a < 0 ? C.faint : colors[p.a];
-        if (p.a >= 0 && opts.hero) { ctx.strokeStyle = rgba(col, 0.09); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(X(p.x), Y(p.y)); ctx.lineTo(X(cents[p.a].x), Y(cents[p.a].y)); ctx.stroke(); }
+        var col = p.a < 0 ? (opts.dark ? "#4a566b" : C.faint) : colors[p.a];
+        if (p.a >= 0 && (opts.hero || opts.dark)) { ctx.strokeStyle = rgba(col, 0.09); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(X(p.x), Y(p.y)); ctx.lineTo(X(cents[p.a].x), Y(cents[p.a].y)); ctx.stroke(); }
         ctx.fillStyle = rgba(col, 0.9); ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), opts.hero ? 2.6 : 2.2, 0, 6.283); ctx.fill();
       });
       cents.forEach(function (c, k) {
@@ -188,7 +188,7 @@
   function boot() {
     document.querySelectorAll("canvas[data-viz]").forEach(function (cv) {
       var make = MAKERS[cv.getAttribute("data-viz")]; if (!make) return;
-      var inst = make(cv, { hero: cv.hasAttribute("data-hero"), readout: cv.getAttribute("data-readout") });
+      var inst = make(cv, { hero: cv.hasAttribute("data-hero"), dark: cv.hasAttribute("data-dark"), readout: cv.getAttribute("data-readout") });
       var item = { cv: cv, inst: inst, visible: true };
       try { inst.resize(); } catch (e) { return; }
       if (inst.warm && reduce) inst.warm();
@@ -216,5 +216,45 @@
       });
     });
   }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot); else boot();
+  /* ---------- hero name: size the title to the exact width of the frame */
+  function fitTitles() {
+    document.querySelectorAll("[data-fit]").forEach(function (el) {
+      var inner = el.querySelector(".fit"); if (!inner) return;
+      var cs = getComputedStyle(el), avail = el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      el.style.fontSize = "100px";
+      var wdt = inner.getBoundingClientRect().width;
+      if (wdt > 0) el.style.fontSize = Math.floor(100 * avail / wdt * 0.995 * 10) / 10 + "px";
+    });
+  }
+
+  /* ---------- stacked scenes: the card underneath recedes as the next one slides over it */
+  function scenes() {
+    var list = Array.prototype.slice.call(document.querySelectorAll(".scene"));
+    if (!list.length) return;
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var vh = window.innerHeight, sticky = window.innerWidth > 1000 && vh > 620 && !reduce;
+      list.forEach(function (s, i) {
+        var next = list[i + 1];
+        if (!sticky || !next) { s.style.setProperty("--p", 0); return; }
+        var stop = parseFloat(getComputedStyle(next).top) || 0;
+        var p = (vh - next.getBoundingClientRect().top) / Math.max(1, vh - stop);
+        s.style.setProperty("--p", Math.max(0, Math.min(1, p)).toFixed(3));
+      });
+    }
+    function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener("scroll", req, { passive: true });
+    window.addEventListener("resize", req);
+    update();
+  }
+
+  function start() {
+    fitTitles();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitTitles);
+    var ft; window.addEventListener("resize", function () { clearTimeout(ft); ft = setTimeout(fitTitles, 100); });
+    boot();
+    scenes();
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();

@@ -5,29 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Edge Video Analytics · Akshit Sharma</title>
 <meta name="description" content="YOLOv8 object detection on video in C++17 with OpenCV's DNN module and no Python at runtime.">
-<meta name="theme-color" content="#eef2f6">
+<meta name="theme-color" content="#eef1f4">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 <header class="site-header"><div class="frame">
 <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>Akshit Sharma</a>
-<nav class="nav" aria-label="Main"><a href="../index.html">Home</a><a href="../projects.html" aria-current="page">Projects</a><a href="../experience.html">Experience</a><a href="../index.html#contact">Contact</a><a class="nav-cta" href="/Akshit_Sharma_Resume.pdf">Resume</a></nav>
+<nav class="nav" aria-label="Main"><a href="../index.html" class="hide-sm">Home</a><a href="../projects.html" aria-current="page">Projects</a><a href="../experience.html" class="hide-xs">Experience</a><a class="hide-sm" href="../index.html#contact">Contact</a><a class="nav-cta" href="/Akshit_Sharma_Resume.pdf">Resume</a></nav>
 </div></header>
 <main>
 <div class="p-edge-video-analytics">
-<section class="case-hero" style="padding:0"><div class="frame">
-<div class="grid">
-<div>
+<section class="case-hero" style="padding:0">
+<div class="text">
 <p class="crumbs"><a href="../projects.html">Projects</a> / Edge Video Analytics</p>
+<div>
 <p class="kind">C++ inference pipeline</p>
 <h1>Edge Video Analytics</h1>
 <p class="lede">YOLOv8 object detection on video in C++17 with OpenCV's DNN module and no Python at runtime.</p>
+</div>
 <div class="actions"><a class="btn primary" href="https://github.com/Aksharma127/Edge-Optimized-Video-Analytics-Pipeline">Source on GitHub <span class="arrow">↗</span></a><a class="btn" href="../projects.html">All projects</a></div>
 </div>
-<div class="case-viz" aria-hidden="true"><canvas data-viz="detect"></canvas><span class="viz-tag">yolov8n detections</span></div>
-</div></div></section>
-<div class="frame"><dl class="facts"><div><dt>336 ms</dt><dd>avg inference, CPU</dd></div><div><dt>252 ms</dt><dd>fastest inference</dd></div><div><dt>12.3 MB</dt><dd>YOLOv8n ONNX model</dd></div><div><dt>80</dt><dd>COCO classes</dd></div></dl></div>
+<div class="case-viz" aria-hidden="true"><canvas data-viz="detect"></canvas><span class="viz-tag">yolov8n detections</span><span class="ghost">C++17</span></div>
+</section>
+<div class="facts-band"><div class="frame"><dl class="facts"><div><dt>336 ms</dt><dd>avg inference, CPU</dd></div><div><dt>252 ms</dt><dd>fastest inference</dd></div><div><dt>12.3 MB</dt><dd>YOLOv8n ONNX model</dd></div><div><dt>80</dt><dd>COCO classes</dd></div></dl></div></div>
 <div class="frame"><div class="case-body"><div class="block"><h2>What it does</h2><div><div class="prose"><p>A command-line C++ program that runs YOLOv8 object detection on a video file or a live webcam (V4L2). It draws bounding boxes and labels, shows per-frame latency, and can write an annotated MP4 or run headless. There is no Python or deep learning framework at runtime, only OpenCV.</p></div></div></div><div class="block"><h2>How a frame moves through it</h2><div><ol class="flow"><li class="node"><strong>Capture</strong><span>Video file or V4L2 webcam</span></li><li class="wire" aria-hidden="true"></li><li class="node"><strong>Letterbox</strong><span>Resize to 640 px input, aspect ratio kept</span></li><li class="wire" aria-hidden="true"></li><li class="node"><strong>Infer</strong><span>YOLOv8n ONNX through OpenCV DNN</span></li><li class="wire" aria-hidden="true"></li><li class="node"><strong>NMS</strong><span>Custom non-maximum suppression</span></li><li class="wire" aria-hidden="true"></li><li class="node"><strong>Output</strong><span>Boxes and telemetry overlay; MP4 file or headless</span></li></ol></div></div><div class="block"><h2>Benchmark (CPU, from the repo README)</h2><div><div class="table-wrap"><table>
 <thead><tr><th>Measure</th><th>Value</th></tr></thead><tbody>
 <tr><td>Test video</td><td class="num">768×432, 647 frames</td></tr>
@@ -37,10 +38,9 @@
 </tbody></table></div>
 <p class="note">That is about 3 frames per second on CPU. The build supports CUDA and FP16 through OpenCV; a GPU benchmark is the next step.</p></div></div>
 <div class="block"><h2>Stack</h2><div><ul class="tags"><li>C++17</li><li>OpenCV 4.11</li><li>ONNX</li><li>YOLOv8</li><li>V4L2</li><li>CMake</li></ul></div></div>
+</div></div>
 </div>
-<nav class="next-prev" aria-label="More case studies"><a href="docqa.html">← docqa</a><a href="chernobyl-kinetics.html">ChernobylKinetics →</a></nav>
-</div>
-</div>
+<a class="next-scene p-chernobyl-kinetics" href="chernobyl-kinetics.html"><div class="frame"><span class="label">Next project</span><span class="big"><span>ChernobylKinetics</span><span class="arr" aria-hidden="true">→</span></span></div></a>
 </main>
 <footer class="site-footer"><div class="frame">
 <span>Akshit Sharma · Updated October 2026</span>

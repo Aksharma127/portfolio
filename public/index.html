@@ -5,87 +5,114 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Akshit Sharma</title>
 <meta name="description" content="AI/ML engineer building RAG systems, ML pipelines and Python backends.">
-<meta name="theme-color" content="#eef2f6">
+<meta name="theme-color" content="#eef1f4">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header class="site-header"><div class="frame">
 <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>Akshit Sharma</a>
-<nav class="nav" aria-label="Main"><a href="index.html" aria-current="page">Home</a><a href="projects.html">Projects</a><a href="experience.html">Experience</a><a href="index.html#contact">Contact</a><a class="nav-cta" href="/Akshit_Sharma_Resume.pdf">Resume</a></nav>
+<nav class="nav" aria-label="Main"><a href="index.html" class="hide-sm" aria-current="page">Home</a><a href="projects.html">Projects</a><a href="experience.html" class="hide-xs">Experience</a><a class="hide-sm" href="index.html#contact">Contact</a><a class="nav-cta" href="/Akshit_Sharma_Resume.pdf">Resume</a></nav>
 </div></header>
 <main>
 <section class="hero" style="padding:0">
 <canvas class="hero-canvas" data-viz="kmeans" data-hero data-readout="km-readout" aria-hidden="true"></canvas>
-<div class="frame">
-<p class="label">AI/ML Engineer · B.Tech CSE (Data Science, AI &amp; ML) · 2026</p>
-<h1>Akshit<br><span class="outline">Sharma</span></h1>
+<div class="frame hero-top"><p class="label">AI/ML Engineer · B.Tech CSE (Data Science, AI &amp; ML) · 2026</p><p class="readout" id="km-readout">live k-means on random data · k = <b>3</b></p></div>
+<div class="frame hero-mid">
 <p class="lede">I build machine learning systems end to end: the data pipeline, the <em>model or retrieval layer</em>, and the Python backend that serves it.</p>
 <div class="status-row"><span class="chip"><i class="live" aria-hidden="true"></i>Available now, full-time</span><span class="chip">Mohali, Punjab · open to relocation &amp; remote</span></div>
-<div class="actions"><a class="btn primary" href="projects.html">See my work <span class="arrow">→</span></a><a class="btn" href="/Akshit_Sharma_Resume.pdf">Resume <span class="arrow">↗</span></a><a class="btn" href="https://github.com/Aksharma127">GitHub <span class="arrow">↗</span></a></div>
-<p class="readout" id="km-readout" aria-live="off">live k-means on random data · k = <b>3</b></p>
+<div class="actions"><a class="btn primary" href="#work">See my work <span class="arrow">↓</span></a><a class="btn" href="/Akshit_Sharma_Resume.pdf">Resume <span class="arrow">↗</span></a><a class="btn" href="https://github.com/Aksharma127">GitHub <span class="arrow">↗</span></a></div>
 </div>
+<h1 class="hero-name" data-fit><span class="fit"><span class="w">Akshit</span> <span class="w w2">Sharma</span></span></h1>
 </section>
 <div class="ticker" aria-label="Highlights"><div class="ticker-track"><span><b>31.42%</b>friction reduction · Headless_BAI</span><span><b>< 180 ms</b>Julia scoring core · GeoSmart</span><span><b>0</b>external API calls · docqa</span><span><b>336 ms</b>YOLOv8n on CPU · Edge video</span><span><b>11</b>coupled ODEs · ChernobylKinetics</span><span><b>30 / 30</b>tests passing · Headless_BAI</span><span><b>60 FPS</b>WebGL heatmap · GeoSmart</span><span><b>Top 5%</b>IIITDM Jabalpur DL intensive</span><span aria-hidden="true" style="display:contents"><span><b>31.42%</b>friction reduction · Headless_BAI</span><span><b>< 180 ms</b>Julia scoring core · GeoSmart</span><span><b>0</b>external API calls · docqa</span><span><b>336 ms</b>YOLOv8n on CPU · Edge video</span><span><b>11</b>coupled ODEs · ChernobylKinetics</span><span><b>30 / 30</b>tests passing · Headless_BAI</span><span><b>60 FPS</b>WebGL heatmap · GeoSmart</span><span><b>Top 5%</b>IIITDM Jabalpur DL intensive</span></span></div></div>
 
-<section id="work"><div class="frame">
-<div class="section-head"><div><span class="label">Selected work</span><h2>Projects</h2></div><a class="more" href="projects.html">All projects →</a></div>
-<div class="cards"><article class="card feature p-headless-bai">
-<div class="viz" aria-hidden="true"><canvas data-viz="kmeans"></canvas><span class="viz-tag">k-means · 3 cohorts</span></div>
-<div class="card-body">
+<section id="work" style="padding-bottom:clamp(40px,6vw,80px)"><div class="frame">
+<div class="intro-row"><div><span class="label">Selected work · 2025–2026</span><h2>Things<br>I've built</h2></div>
+<div><p>Five systems, each with public source. Every number on this site comes from the repo or my capstone report, and each case study says which.</p><a class="more" href="projects.html">All projects and other work →</a></div></div>
+</div>
+<div class="scenes"><article class="scene p-headless-bai" style="--i:0">
+<div class="scene-text">
+<div>
 <p class="kind">B.Tech capstone · Jan–Jun 2026</p>
 <h3><a href="projects/headless-bai.html">Headless_BAI</a></h3>
 <p class="short">A web page that reorders its own sections based on how visitors behave. Interaction telemetry is filtered for bots, clustered into behavioral cohorts with K-Means, and each cohort gets its own layout.</p>
-<dl class="metrics"><div><dt>31.42%</dt><dd>lower friction score vs. baseline, on a 10,800-event synthetic benchmark</dd></div><div><dt>< 1 ms</dt><dd>main-thread cost of the telemetry script</dd></div><div><dt>30 / 30</dt><dd>pytest tests passing in CI</dd></div></dl>
-<ul class="tags"><li>Python</li><li>FastAPI</li><li>Redis</li><li>Supabase</li><li>scikit-learn</li><li>Llama-3-8B</li><li>C++ / Chromium</li><li>Docker</li></ul>
-<div class="foot"><a class="repo" href="https://github.com/Aksharma127/Headless_BAI_orignal">GitHub ↗</a><span class="go">Case study →</span></div>
 </div>
-</article><article class="card  p-geosmart-advisor">
-<div class="viz" aria-hidden="true"><canvas data-viz="heatmap"></canvas><span class="viz-tag">site score heatmap</span></div>
-<div class="card-body">
+<div class="scene-bottom">
+<dl class="metrics"><div><dt>31.42%</dt><dd>lower friction score vs. baseline, on a 10,800-event synthetic benchmark</dd></div><div><dt>< 1 ms</dt><dd>main-thread cost of the telemetry script</dd></div><div><dt>30 / 30</dt><dd>pytest tests passing in CI</dd></div></dl>
+<div class="actions"><a class="btn primary" href="projects/headless-bai.html">Read the case study <span class="arrow">→</span></a><a class="btn" href="https://github.com/Aksharma127/Headless_BAI_orignal">GitHub <span class="arrow">↗</span></a></div>
+</div>
+</div>
+<div class="scene-viz" aria-hidden="true"><canvas data-viz="kmeans"></canvas><span class="viz-tag">k-means · 3 cohorts</span><span class="ghost">31.42%</span></div>
+</article><article class="scene p-geosmart-advisor" style="--i:1">
+<div class="scene-text">
+<div>
 <p class="kind">Geospatial ML · Jun–Sep 2025</p>
 <h3><a href="projects/geosmart-advisor.html">GeoSmart Advisor</a></h3>
 <p class="short">Scores a map location for how well a given type of business would do there. Live OpenStreetMap and Foursquare data go through a Julia scoring core, and a local Phi-3-mini model writes the site report.</p>
-<dl class="metrics"><div><dt>< 180 ms</dt><dd>Julia scoring for 100 candidates (NumPy: ~2.1 s)</dd></div><div><dt>< 420 MB</dt><dd>peak RAM per pipeline stage</dd></div></dl>
-
-<div class="foot"><a class="repo" href="https://github.com/Aksharma127/GeoSmart_Advisor">GitHub ↗</a><span class="go">Case study →</span></div>
 </div>
-</article><article class="card  p-docqa">
-<div class="viz" aria-hidden="true"><canvas data-viz="topk"></canvas><span class="viz-tag">semantic search · k = 5</span></div>
-<div class="card-body">
+<div class="scene-bottom">
+<dl class="metrics"><div><dt>< 180 ms</dt><dd>Julia scoring for 100 candidates (NumPy: ~2.1 s)</dd></div><div><dt>< 420 MB</dt><dd>peak RAM per pipeline stage</dd></div><div><dt>60 FPS</dt><dd>WebGL heatmap at 100k+ points</dd></div></dl>
+<div class="actions"><a class="btn primary" href="projects/geosmart-advisor.html">Read the case study <span class="arrow">→</span></a><a class="btn" href="https://github.com/Aksharma127/GeoSmart_Advisor">GitHub <span class="arrow">↗</span></a></div>
+</div>
+</div>
+<div class="scene-viz" aria-hidden="true"><canvas data-viz="heatmap"></canvas><span class="viz-tag">site score heatmap</span><span class="ghost">180 ms</span></div>
+</article><article class="scene p-docqa" style="--i:2">
+<div class="scene-text">
+<div>
 <p class="kind">Local RAG · Feb–Mar 2026</p>
 <h3><a href="projects/docqa.html">docqa</a></h3>
 <p class="short">Question answering over your own PDFs and notes that never leaves your machine. Embeddings, vector search and the language model all run locally, and every answer points back to the file, page and section it came from.</p>
-<dl class="metrics"><div><dt>0</dt><dd>paid APIs or network calls at query time</dd></div><div><dt>SHA-256</dt><dd>content-hash indexing: unchanged files are skipped</dd></div></dl>
-
-<div class="foot"><a class="repo" href="https://github.com/Aksharma127/docqa-project">GitHub ↗</a><span class="go">Case study →</span></div>
 </div>
-</article><article class="card  p-edge-video-analytics">
-<div class="viz" aria-hidden="true"><canvas data-viz="detect"></canvas><span class="viz-tag">yolov8n detections</span></div>
-<div class="card-body">
+<div class="scene-bottom">
+<dl class="metrics"><div><dt>0</dt><dd>paid APIs or network calls at query time</dd></div><div><dt>SHA-256</dt><dd>content-hash indexing: unchanged files are skipped</dd></div><div><dt>~1 GB</dt><dd>Qwen2.5-1.5B Q4_K_M model via llama.cpp</dd></div></dl>
+<div class="actions"><a class="btn primary" href="projects/docqa.html">Read the case study <span class="arrow">→</span></a><a class="btn" href="https://github.com/Aksharma127/docqa-project">GitHub <span class="arrow">↗</span></a></div>
+</div>
+</div>
+<div class="scene-viz" aria-hidden="true"><canvas data-viz="topk"></canvas><span class="viz-tag">semantic search · k = 5</span><span class="ghost">offline</span></div>
+</article><article class="scene p-edge-video-analytics" style="--i:3">
+<div class="scene-text">
+<div>
 <p class="kind">C++ inference pipeline</p>
 <h3><a href="projects/edge-video-analytics.html">Edge Video Analytics</a></h3>
 <p class="short">Object detection on video files or a webcam, written in C++17 with no Python in the inference path. YOLOv8n runs through OpenCV's DNN module, with custom NMS and per-frame latency readouts.</p>
-<dl class="metrics"><div><dt>336 ms</dt><dd>average inference per frame on CPU</dd></div><div><dt>647</dt><dd>frames in the 768×432 benchmark video</dd></div></dl>
-
-<div class="foot"><a class="repo" href="https://github.com/Aksharma127/Edge-Optimized-Video-Analytics-Pipeline">GitHub ↗</a><span class="go">Case study →</span></div>
 </div>
+<div class="scene-bottom">
+<dl class="metrics"><div><dt>336 ms</dt><dd>average inference per frame on CPU</dd></div><div><dt>647</dt><dd>frames in the 768×432 benchmark video</dd></div><div><dt>12.3 MB</dt><dd>YOLOv8n ONNX model, 80 COCO classes</dd></div></dl>
+<div class="actions"><a class="btn primary" href="projects/edge-video-analytics.html">Read the case study <span class="arrow">→</span></a><a class="btn" href="https://github.com/Aksharma127/Edge-Optimized-Video-Analytics-Pipeline">GitHub <span class="arrow">↗</span></a></div>
+</div>
+</div>
+<div class="scene-viz" aria-hidden="true"><canvas data-viz="detect"></canvas><span class="viz-tag">yolov8n detections</span><span class="ghost">C++17</span></div>
+</article><article class="scene p-chernobyl-kinetics" style="--i:4">
+<div class="scene-text">
+<div>
+<p class="kind">Simulation · Julia</p>
+<h3><a href="projects/chernobyl-kinetics.html">ChernobylKinetics</a></h3>
+<p class="short">A reconstruction of the 1986 Chernobyl reactor excursion as a point-kinetics model: 11 coupled ODEs solved with DifferentialEquations.jl, with parameters from the IAEA INSAG-7 report, run across five what-if scenarios.</p>
+</div>
+<div class="scene-bottom">
+<dl class="metrics"><div><dt>11</dt><dd>coupled ODEs in the reactor model</dd></div><div><dt>6</dt><dd>delayed-neutron precursor groups</dd></div><div><dt>5</dt><dd>scenarios, from baseline to no graphite tips</dd></div></dl>
+<div class="actions"><a class="btn primary" href="projects/chernobyl-kinetics.html">Read the case study <span class="arrow">→</span></a><a class="btn" href="https://github.com/Aksharma127/ChernobylKinetics">GitHub <span class="arrow">↗</span></a></div>
+</div>
+</div>
+<div class="scene-viz" aria-hidden="true"><canvas data-viz="chain"></canvas><span class="viz-tag">neutron chain reaction</span><span class="ghost">11 ODEs</span></div>
 </article></div>
+</section>
+
+<section><div class="frame split">
+<div class="side drift"><span class="label">Where I've worked and trained</span><h2>Exper&shy;ience</h2><div class="edu"><p class="label">Education</p><h3>B.Tech, Computer Science Engineering (Data Science, AI &amp; ML)</h3><p class="muted">Bahra University, Himachal Pradesh · Class of 2026</p></div><a class="more" href="experience.html">Full experience and certifications →</a></div>
+<div><div class="rows"><div class="row" style="--rc: var(--c1)"><div class="when">Jan 2026 – Jun 2026</div><div><h3>AI/ML Engineering Trainee</h3><p class="org">Future Finders · 6-month traineeship</p></div><p class="note">Took deep learning models from data preprocessing through training, validation and deployment.</p></div><div class="row" style="--rc: var(--c3)"><div class="when">Dec 2025</div><div><h3>Google Student Ambassador</h3><p class="org">Google</p></div><p class="note">Ran hands-on sessions for students on Google Gemini and applied AI.</p></div><div class="row" style="--rc: var(--c2)"><div class="when">Jun 2025</div><div><h3>Deep Learning Intensive</h3><p class="org">PDPM IIITDM Jabalpur</p></div><p class="note">Received the Excellence Award, placing in the top 5% of 100+ participants.</p></div><div class="row" style="--rc: var(--c4)"><div class="when">Sep 2024 – Oct 2024</div><div><h3>Cloud ML Deployment Trainee</h3><p class="org">IBM Cloud</p></div><p class="note">Deployed containerized ML applications with auto-scaling on IBM Cloud.</p></div></div></div>
 </div></section>
 
-<section><div class="frame">
-<div class="section-head"><div><span class="label">Where I've worked and trained</span><h2>Experience</h2></div><a class="more" href="experience.html">Full experience →</a></div>
-<div class="timeline"><div class="role" style="--rc: var(--c1)"><div class="when">Jan 2026 – Jun 2026</div><div><h3>AI/ML Engineering Trainee</h3><p class="org">Future Finders · 6-month traineeship</p><p class="note">Took deep learning models from data preprocessing through training, validation and deployment.</p></div></div><div class="role" style="--rc: var(--c3)"><div class="when">Dec 2025</div><div><h3>Google Student Ambassador</h3><p class="org">Google</p><p class="note">Ran hands-on sessions for students on Google Gemini and applied AI.</p></div></div><div class="role" style="--rc: var(--c2)"><div class="when">Jun 2025</div><div><h3>Deep Learning Intensive</h3><p class="org">PDPM IIITDM Jabalpur</p><p class="note">Received the Excellence Award, placing in the top 5% of 100+ participants.</p></div></div><div class="role" style="--rc: var(--c4)"><div class="when">Sep 2024 – Oct 2024</div><div><h3>Cloud ML Deployment Trainee</h3><p class="org">IBM Cloud</p><p class="note">Deployed containerized ML applications with auto-scaling on IBM Cloud.</p></div></div></div>
-<div class="edu"><p class="label">Education</p><h3>B.Tech, Computer Science Engineering (Data Science, AI &amp; ML)</h3><p class="muted">Bahra University, Himachal Pradesh · Class of 2026 · Capstone: <a href="projects/headless-bai.html">Headless_BAI</a></p></div>
+<section style="padding-top:0"><div class="frame split">
+<div class="side drift"><span class="label">Tools I use</span><h2>Skills</h2><p>What I've used in the projects above, not a list of everything I've touched once.</p></div>
+<div><div class="rows"><div class="skill-row"><h3>Languages</h3><ul class="tags"><li>Python</li><li>C++</li><li>Julia</li><li>TypeScript</li><li>Java</li><li>SQL</li></ul></div><div class="skill-row"><h3>LLMs and retrieval</h3><ul class="tags"><li>RAG</li><li>LangGraph</li><li>LangChain</li><li>ChromaDB</li><li>Qdrant</li><li>sentence-transformers</li><li>llama.cpp</li><li>Groq</li><li>prompt design</li></ul></div><div class="skill-row"><h3>Machine learning</h3><ul class="tags"><li>PyTorch</li><li>TensorFlow/Keras</li><li>scikit-learn</li><li>XGBoost</li><li>LightGBM</li><li>K-Means and clustering</li><li>model evaluation</li></ul></div><div class="skill-row"><h3>Backend and data</h3><ul class="tags"><li>FastAPI</li><li>Flask</li><li>Pydantic</li><li>REST APIs</li><li>PostgreSQL</li><li>Supabase</li><li>SQLite</li><li>DuckDB</li><li>Redis</li><li>pandas</li><li>NumPy</li></ul></div><div class="skill-row"><h3>Infrastructure</h3><ul class="tags"><li>Docker</li><li>Docker Compose</li><li>GitHub Actions</li><li>GCP Cloud Run</li><li>IBM Cloud</li><li>Linux</li><li>Git</li></ul></div><div class="skill-row"><h3>Frontend</h3><ul class="tags"><li>React</li><li>TypeScript</li><li>deck.gl</li><li>WebGL heatmaps</li></ul></div></div></div>
 </div></section>
-
-<section><div class="frame">
-<div class="section-head"><div><span class="label">Tools I use</span><h2>Skills</h2></div></div>
-<div class="skills"><div class="skill"><h3>Languages</h3><ul class="tags"><li>Python</li><li>C++</li><li>Julia</li><li>TypeScript</li><li>Java</li><li>SQL</li></ul></div><div class="skill"><h3>LLMs and retrieval</h3><ul class="tags"><li>RAG</li><li>LangGraph</li><li>LangChain</li><li>ChromaDB</li><li>Qdrant</li><li>sentence-transformers</li><li>llama.cpp</li><li>Groq</li><li>prompt design</li></ul></div><div class="skill"><h3>Machine learning</h3><ul class="tags"><li>PyTorch</li><li>TensorFlow/Keras</li><li>scikit-learn</li><li>XGBoost</li><li>LightGBM</li><li>K-Means and clustering</li><li>model evaluation</li></ul></div><div class="skill"><h3>Backend and data</h3><ul class="tags"><li>FastAPI</li><li>Flask</li><li>Pydantic</li><li>REST APIs</li><li>PostgreSQL</li><li>Supabase</li><li>SQLite</li><li>DuckDB</li><li>Redis</li><li>pandas</li><li>NumPy</li></ul></div><div class="skill"><h3>Infrastructure</h3><ul class="tags"><li>Docker</li><li>Docker Compose</li><li>GitHub Actions</li><li>GCP Cloud Run</li><li>IBM Cloud</li><li>Linux</li><li>Git</li></ul></div><div class="skill"><h3>Frontend</h3><ul class="tags"><li>React</li><li>TypeScript</li><li>deck.gl</li><li>WebGL heatmaps</li></ul></div></div>
-</div></section>
-<section class="contact" id="contact"><div class="frame">
+<section class="credits" id="contact">
+<canvas class="credits-canvas" data-viz="kmeans" data-dark aria-hidden="true"></canvas>
+<div class="frame">
 <p class="label">Contact</p>
-<h2 style="margin-top:14px">Hiring for AI/ML<br>or <span>Python</span> roles?</h2>
+<h2>Hiring for <span class="a">AI/ML</span><br>or <span class="o">Python</span><br>roles?</h2>
 <p class="intro">I'm looking for full-time work in AI/ML engineering, Python backend and data. I can start immediately, and I'm open to relocating or working remotely. Email is the fastest way to reach me.</p>
 <div class="mail-row"><a class="mail" href="mailto:asharma53858@gmail.com">asharma53858@gmail.com</a><button class="copy" type="button" id="copy-email" data-copy="asharma53858@gmail.com">Copy email</button></div>
 <div class="links-row"><a class="btn primary" href="/Akshit_Sharma_Resume.pdf">Resume (PDF) <span class="arrow">↗</span></a><a class="btn" href="https://www.linkedin.com/in/akshit-sharma-52660a251/">LinkedIn <span class="arrow">↗</span></a><a class="btn" href="https://github.com/Aksharma127">GitHub <span class="arrow">↗</span></a></div>
